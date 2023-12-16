@@ -99,6 +99,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="./AddMenu.php"><span class="ml-1 item-text">Thêm Menu Mới</span></a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="./AddMenu.php"><span class="ml-1 item-text">Thêm Menu Mới</span></a>
+                </li>
                 </li>
               </ul>
             </li>
