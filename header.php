@@ -64,7 +64,7 @@
                           }
                           else
                           {
-                            echo '<li><a href="newpost.php">Đăng Tin</a></li>';
+                            echo '<li><a href="dangtin.php">Đăng Tin</a></li>';
                           }
                           echo '<li><a href="profile.php"><i class="fa-solid fa-user"></i> Xin Chào, '.$_SESSION['username'].'</a></li>';
                           echo '<li><a href="model/deletesession.php"><i class="fa-solid fa-right-to-bracket"></i>Đăng Xuất</a></li>';
