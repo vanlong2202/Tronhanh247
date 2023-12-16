@@ -11,7 +11,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2 class="mb-2 page-title">Danh sách danh mục test</h2>
+        <h2 class="mb-2 page-title">Danh sách danh mục menu</h2>
         <a href="AddMenu.php" type="button" class="btn mb-2 btn-info">Thêm Mới</a>
         <!-- <button  type="button" class="btn mb-2 btn-secondary"><span class="fe fe-24 fe-plus-circle"></span><a href="./AddMenu.php"> Thêm Menu Mới</a></button> -->
         <div class="row my-4">
