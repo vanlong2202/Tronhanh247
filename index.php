@@ -3,7 +3,7 @@
     <div class="owl-carousel owl-banner">
       <div class="item item-1">
         <div class="header-text">
-          <span class="category">Việt Nam, <em>2024</em></span>
+          <span class="category">Việt Nam, <em>2023</em></span>
           <h2>TÌM NHANH, KIẾM DỄ TRỌ MỚI TOÀN QUỐC</h2>
         </div>
       </div>
