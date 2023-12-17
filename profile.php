@@ -14,6 +14,21 @@ if (!isset($_SESSION['loggedin'])) {
       $email = $row["Email"];
       $address = $row["Address"];
   }
+  $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID WHERE Tk_ID ='$_SESSION[tk_id]'";
+  $result1 = mysqli_query($conn, $sql_bantin);
+  $ds = [];
+  $TT = 1;
+  while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+    $ds[] = array(
+      'TT' => $TT,
+      'Tin_title' =>$row1['Tin_title'],
+      'Ltin_name' => $row1['Ltin_name'],
+      'Description' => $row1['Description'],
+      'Tin_time' => $row1['Tin_time'],
+      'Tttindv_ID' => $row1['Tttindv_ID'],
+    );
+    $TT++;
+  }
 ?>
   <div class="page-heading header-text">
     <div class="container">
@@ -100,36 +115,56 @@ if (!isset($_SESSION['loggedin'])) {
             <div class="card-header">
               <h6 class="card-title">DANH SÁCH BẢN TIN ĐÃ ĐĂNG</h6>
             </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group mb-3">
-                    <label for="simpleinput">Họ Và Tên</label>
-                    <input value="<?php echo $row['FullName']; ?>" type="text" id="simpleinput" class="form-control">
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="example-email">Email</label>
-                    <input value="<?php echo $row['Email']; ?>" type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+            <div class="col-md-12">
+                  <div class="card-body">
+                  <?php if (empty($ds)) {
+                    echo 'Không có kết quả nào !';
+                  } else { ?>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Tiều đề</th>
+                          <th>Loại hình</th>
+                          <th>Thời gian</th>
+                          <th>Lí do từ chối (Nếu có)</th>
+                          <th>Trạng Thái</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php foreach ($ds as $row1) : ?>
+                        <tr>
+                          <td>#<?php echo $row1['TT'] ?></td>
+                          <td><?php echo $row1['Tin_title'] ?></td>
+                          <td><?php echo $row1['Ltin_name'] ?></td>
+                          <td><?php echo $row1['Tin_time'] ?></td>
+                          <td><?php echo $row1['Description'] ?></td>
+                          <td>
+                            <?php if ($row1['Tttindv_ID'] == 1) : ?>
+                                <button type="button" class="btn mb-2 btn-primary btn-sm">Đang phê duyệt</button>
+                            <?php endif; ?>
+                            <?php if ($row1['Tttindv_ID'] == 2) : ?>
+                                <button type="button" class="btn mb-2 btn-success btn-sm">Thành Công</button>
+                            <?php endif; ?></span>
+                            <?php if ($row1['Tttindv_ID'] == 3) : ?>
+                                <button type="button" class="btn mb-2 btn-danger btn-sm">Từ Chối</button>
+                            <?php endif; ?></span>
+                          </td>
+                        </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  <?php }?>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group mb-3">
-                    <label for="example-password">Số Điện Thoại</label>
-                    <input value="<?php echo $row['Phone']; ?>" type="text" id="example-password" class="form-control" value="password">
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="example-palaceholder">Facebook</label>
-                    <input type="text" id="example-palaceholder" class="form-control" placeholder="Nhập đường đẫn facebook của bạn tại đây...">
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-      </div>
-    </div>
-    <div class="col-lg-12">
+            <div class="col-lg-12">
       <div id="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.1102349383827!2d105.69317477473831!3d18.659048664930566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139cddf0bf20f23%3A0x86154b56a284fa6d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBWaW5o!5e0!3m2!1svi!2s!4v1701333714488!5m2!1svi!2s" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
+      </div>
+    </div>
+          </div>
       </div>
     </div>
     </div>
