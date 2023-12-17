@@ -90,12 +90,48 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
           </form>
         </div>
-        <div class="col-lg-12">
-          <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.1102349383827!2d105.69317477473831!3d18.659048664930566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139cddf0bf20f23%3A0x86154b56a284fa6d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBWaW5o!5e0!3m2!1svi!2s!4v1701333714488!5m2!1svi!2s" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
-          </div>
-        </div>
       </div>
+      <div class="contact-page section">
+    <div class="container">
+        <div class="section-heading">
+            <h6>| Bản tin đã đăng</h6>
+          </div>
+        <div class="card shadow mb-4">
+            <div class="card-header">
+              <h6 class="card-title">DANH SÁCH BẢN TIN ĐÃ ĐĂNG</h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="simpleinput">Họ Và Tên</label>
+                    <input value="<?php echo $row['FullName']; ?>" type="text" id="simpleinput" class="form-control">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="example-email">Email</label>
+                    <input value="<?php echo $row['Email']; ?>" type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="example-password">Số Điện Thoại</label>
+                    <input value="<?php echo $row['Phone']; ?>" type="text" id="example-password" class="form-control" value="password">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="example-palaceholder">Facebook</label>
+                    <input type="text" id="example-palaceholder" class="form-control" placeholder="Nhập đường đẫn facebook của bạn tại đây...">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.1102349383827!2d105.69317477473831!3d18.659048664930566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139cddf0bf20f23%3A0x86154b56a284fa6d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBWaW5o!5e0!3m2!1svi!2s!4v1701333714488!5m2!1svi!2s" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
+      </div>
+    </div>
     </div>
   </div>
 

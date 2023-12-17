@@ -1,19 +1,14 @@
-<?php include("header.php"); 
-// Kiểm tra xem người dùng đã đăng nhập chưa
-if (!isset($_SESSION['loggedin'])) {
+<?php include("header.php");
+  if (!isset($_SESSION['loggedin'])) {
     // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
     header("Location: login.php");
     exit();
-}
+  }
   include_once(__DIR__ . '/model/config.php');
   $sql = "SELECT * from tbltaikhoan WHERE Tk_ID ='$_SESSION[tk_id]'";
-  $result = mysqli_query($conn, $sql);
-  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-      $fullname = $row["FullName"];
-      $phone = $row["Phone"];
-      $email = $row["Email"];
-      $address = $row["Address"];
-  }
+  $result = mysqli_query($conn,$sql);
+  $row = mysqli_fetch_assoc($result);
+
   if(isset($_POST['edit'])){
     $fullname = $_POST['fullname'];
     $address = $_POST['address'];
@@ -23,98 +18,165 @@ if (!isset($_SESSION['loggedin'])) {
     mysqli_query($conn,$edit);
     header("location: ./profile.php");
   }
-
 ?>
-  <div class="page-heading header-text">
+<div class="page-heading header-text">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <span class="breadcrumb"><a href="#">Home</a>  / EDIT PROFILE</span>
-          <h3>CẬP NHẬT THÔNG TIN TRANG CÁ NHÂN</h3>
+          <span class="breadcrumb"><a href="#">Home</a>  /  ĐĂNG TIN</span>
+          <h3>ĐĂNG TIN</h3>
         </div>
       </div>
     </div>
   </div>
-<div class="contact-page section">
+  <form action="addbantin.php" method="post">
+    <div class="contact-page section">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h6>| THÔNG TIN CHI TIẾT</h6>
-            <h2><?php echo 'Xin Chào, '.$_SESSION["username"]; ?></h2>
+        <div class="section-heading">
+            <h6>| Đăng Bản Tin</h6>
+            <h2><?php echo 'Xin chào, '.$_SESSION["username"]; ?></h2>
           </div>
-          <p>Vui lòng cập nhật thông tin cá nhân để thuận tiện trong việc sử dụng các dịch vụ của chúng tôi !</p>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="item phone">
-                <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6><?php echo $phone; ?><br><span>Số Điện Thoại</span></h6>
+        <div class="card shadow mb-4">
+            <div class="card-header">
+              <h4 class="card-title">THÔNG TIN LIÊN HỆ</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="simpleinput">Họ Và Tên</label>
+                    <input value="<?php echo $row['FullName']; ?>" type="text" id="simpleinput" class="form-control">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="example-email">Email</label>
+                    <input value="<?php echo $row['Email']; ?>" type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label for="example-password">Số Điện Thoại</label>
+                    <input value="<?php echo $row['Phone']; ?>" type="text" id="example-password" class="form-control" value="password">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="example-palaceholder">Facebook</label>
+                    <input type="text" id="example-palaceholder" class="form-control" placeholder="Nhập đường đẫn facebook của bạn tại đây...">
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-lg-12">
-              <div class="item email">
-                <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6><?php echo $email; ?><br><span>Địa Chỉ Email</span></h6>
-              </div>
-            </div>
-            
           </div>
-        </div>
-        <div class="col-lg-6">
-          <form id="contact-form" action="" method="post">
-            <div class="row">
-            <div class="col-lg-12">
-                <fieldset>
-                  <label for="username">Tên Đăng Nhập</label>
-                  <input value="<?php echo $_SESSION["username"]; ?>" type="text" name="username" id="username" placeholder="Subject..." readonly autocomplete="on" >
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="fullname">Họ Và Tên</label>
-                  <input value="<?php echo $fullname; ?>" type="name" name="fullname" id="fullname" placeholder="Your Name..."  autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="address">Địa Chỉ</label>
-                  <input value="<?php echo $address; ?>" type="text" name="address" id="address" placeholder="Your Address..." autocomplete="on">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="phone">Số Điện Thoại</label>
-                  <input value="<?php echo $phone; ?>" type="text" name="phone" id="phone" placeholder="Your Phone..."  autocomplete="on" >
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="email">Địa Chỉ Email</label>
-                  <input value="<?php echo $email; ?>" type="email" name="email" id="email" placeholder="Your Email..." autocomplete="on" >
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" name="edit" id="edit" class="orange-button">Lưu Thông Tin</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-12">
-          <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.1102349383827!2d105.69317477473831!3d18.659048664930566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139cddf0bf20f23%3A0x86154b56a284fa6d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBWaW5o!5e0!3m2!1svi!2s!4v1701333714488!5m2!1svi!2s" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-
-  <footer>
+      <div class="container">
+          <div class="card shadow mb-4">
+              <div class="card-header">
+                <h4 class="card-title">CHI TIẾT BẢN TIN</h4>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12 mb-2">
+                    <div class="form-group mb-1">
+                      <label for="example-static">Tiêu đề tin</label>
+                      <input class="form-control" type="text" placeholder="Tiêu đề bản tin...">
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-2 d-flex justify-content-between">
+                    <div class="col-md-3 mb-2">
+                      <label for="validationCustom04">Loại Hình</label>
+                      <select class="form-control" id="validationCustom04" required>
+                        <option>Cho Thuê Trọ</option>
+                        <option>Cho Thuê Nhà/Căn Hộ</option>
+                        <option>Tìm Ở Ghép</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-1">
+                      <label for="validationCustom04">Hình Thức Trọ</label>
+                      <select class="form-control" id="validationCustom04" required>
+                        <option>Cho Thuê Trọ</option>
+                        <option>Cho Thuê Nhà/Căn Hộ</option>
+                        <option>Tìm Ở Ghép</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-1">
+                      <label for="validationCustom04">Trọ tự quản</label>
+                      <select class="form-control" id="validationCustom04" required>
+                        <option selected disabled value="">--- Chọn Hình Thức ---</option>
+                        <option>Không</option>
+                        <option>Có</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-2 d-flex justify-content-between">
+                    <div class="col-md-3 mb-2">
+                      <label for="example-palaceholder">Phòng trống</label>
+                      <input type="number" id="example-palaceholder" class="form-control" placeholder="Số phòng trống">
+                    </div>
+                    <div class="col-md-3 mb-1">
+                      <label for="example-palaceholder">Tổng phòng</label>
+                      <input type="number" id="example-palaceholder" class="form-control" placeholder="Tống số phòng">
+                    </div>
+                    <div class="col-md-3 mb-1">
+                      <label for="example-palaceholder">Ở Tối Đa (người/phòng)</label>
+                      <input type="number" id="example-palaceholder" class="form-control" placeholder="Tối đa số người ở 1 phòng">
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-2 d-flex justify-content-between">
+                      <div class="col-md-3 mb-1">
+                        <label for="validationCustomUsername">Diện tích phòng</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control" placeholder="Diện tích của phòng" required>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">m²</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationCustomUsername">Giá phòng</label>
+                        <div class="input-group">
+                          
+                          <input type="text" class="form-control" placeholder="Nhập đúng giá trị tiền" required>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">VND</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-2">
+                        <label for="validationCustomUsername">Giới Tính Ưu Tiên</label>
+                        <select class="form-control" id="validationCustom04" required>
+                          <option>--- Tất cả ---</option>
+                          <option>Nữ</option>
+                          <option>Nam</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col-md-12 mb-2">
+                    <div class="form-group mb-1">
+                      <label for="example-static">Địa Chỉ</label>
+                      <input class="form-control" type="text" placeholder="Nhập địa chỉ chi tiết tại đây ...">
+                    </div>
+                  </div>
+                  <div class="col-md-12  mb-2">
+                    <div class="form-group">
+                      <label for="example-static">Mô tả chi tiết</label>
+                      <textarea class="form-control" type="text" placeholder="Mô tả chi tiết tại đây ..." rows="6"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group mb-12">
+                          <label for="example-fileinput">Tải hình ảnh lên</label>
+                          <input type="file" id="example-fileinput" class="form-control-file">
+                        </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group d-grid gap-2 col-2 mx-auto mb-3">
+              <input name="addtk" type="submit" class="btn btn-danger" value="ĐĂNG TIN"> 
+          </div>
+    </div>
+</form>
+<footer>
     <div class="container">
       <div class="col-lg-12">
         <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
-        
         Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
       </div>
     </div>
