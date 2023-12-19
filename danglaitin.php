@@ -4,10 +4,21 @@
     header("Location: login.php");
     exit();
   }
+  $TinID= $_GET['id'];
   include_once(__DIR__ . '/model/config.php');
-  $sql = "SELECT * from tbltaikhoan WHERE Tk_ID ='$_SESSION[tk_id]'";
+  $sql = "SELECT * FROM `tbltindv` INNER JOIN tbltaikhoan ON tbltindv.Tk_ID = tbltaikhoan.Tk_ID inner JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID where tbltindv.TinID = $TinID";
   $result = mysqli_query($conn,$sql);
   $row = mysqli_fetch_assoc($result);
+
+  $sql_bantin = "SELECT * from tbl_lbantin";
+  $result1 = mysqli_query($conn, $sql_bantin);
+  $ds = [];
+  while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+    $ds[] = array(
+      'Ltin_ID' => $row1['Ltin_ID'],
+      'Ltin_name' =>$row1['Ltin_name'],
+    );
+  }
 ?>
 <div class="page-heading header-text">
     <div class="container">
@@ -19,7 +30,7 @@
       </div>
     </div>
   </div>
-  <form action="model/addbantin.php" method="post">
+  <form action="model/editbantin.php" method="post">
     <div class="contact-page section">
     <div class="container">
         <div class="section-heading">
@@ -64,37 +75,54 @@
               </div>
               <div class="card-body">
                 <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="form-group mb-1">
+                      <label for="example-static">Mã bản tin</label>
+                      <input value="<?php echo $row['TinID']; ?>" name="TinID" id="TinID" class="form-control" type="text" placeholder="Tiêu đề bản tin..." readonly>
+                    </div>
+                  </div>
                   <div class="col-md-12 mb-2">
                     <div class="form-group mb-1">
                       <label for="example-static">Tiêu đề tin</label>
-                      <input name="Tin_title" id="Tin_title" class="form-control" type="text" placeholder="Tiêu đề bản tin...">
+                      <input value="<?php echo $row['Tin_title']; ?>" name="Tin_title" id="Tin_title" class="form-control" type="text" placeholder="Tiêu đề bản tin...">
                     </div>
                   </div>
                   <div class="col-md-12 mb-2 d-flex justify-content-between">
                     <div class="col-md-3 mb-2">
                       <label for="validationCustom04">Loại Hình</label>
                       <select class="form-control" name="Ltin_ID" id="Ltin_ID" required>
-                        <option value="1">Cho Thuê Trọ</option>
-                        <option value="2">Cho Thuê Nhà/Căn Hộ</option>
-                        <option value="3">Tìm Ở Ghép</option>
+                        <option value="<?php echo $row['Ltin_ID'];?>"><?php echo $row['Ltin_name']; ?></option>
+                        <?php foreach ($ds as $row1): ?>
+                        <option value="<?php echo $row1['Ltin_ID']; ?>"><?php echo $row1['Ltin_name']; ?></option>
+                        <?php endforeach; ?>
                       </select>
                     </div>
                     <div class="col-md-3 mb-1">
                       <label for="validationCustom04">Hình Thức Trọ</label>
                       <select class="form-control" name="Tin_hinhthuc" id="Tin_hinhthuc" required>
-                      <option value="Phòng trọ">Phòng trọ</option>
-                      <option value="Ký túc xá (dorm)">Ký túc xá (dorm)</option>
-                      <option value="Chung cư mini">Chung cư mini</option>
-                      <option value="Cư xá">Cư xá</option>
-                      <option value="Homestay">Homestay</option>
-                      <option value="Trọ nhà nguyên căn">Trọ nhà nguyên căn</option>
-                      <option value="Trọ trong nhà chung chủ">Trọ trong nhà chung chủ</option>
+                        <option value="<?php echo $row['Tin_hinhthuc'];?>"><?php echo $row['Tin_hinhthuc'];?></option>
+                        <option value="Phòng Trọ">Phòng Trọ</option>
+                        <option value="Ký túc xá (dorm)">Ký túc xá (dorm)</option>
+                        <option value="Chung cư mini">Chung cư mini</option>
+                        <option value="Cư xá">Cư xá</option>
+                        <option value="Homestay">Homestay</option>
+                        <option value="Trọ nhà nguyên căn">Trọ nhà nguyên căn</option>
+                        <option value="Trọ trong nhà chung chủ">Trọ trong nhà chung chủ</option>
                       </select>
                     </div>
                     <div class="col-md-3 mb-1">
                       <label for="validationCustom04">Trọ tự quản</label>
                       <select  class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
-                        <option selected disabled value="0">--- Chọn Hình Thức ---</option>
+                        <option value="<?php echo $row['Tin_tuquan'];?>">
+                            <?php if($row['Tin_tuquan']==0){
+                              echo '---Chọn hình thức---';
+                            } else if($row['Tin_tuquan']==1){
+                              echo 'Không';
+                            } else{
+                              echo 'Có';
+                            }
+                            ?>
+                        </option>
                         <option value="1">Không</option>
                         <option value="2">Có</option>
                       </select>
@@ -103,22 +131,22 @@
                   <div class="col-md-12 mb-2 d-flex justify-content-between">
                     <div class="col-md-3 mb-2">
                       <label for="example-palaceholder">Phòng trống</label>
-                      <input name="Tin_phongtrong" id="Tin_phongtrong" type="number" id="example-palaceholder" class="form-control" placeholder="Số phòng trống">
+                      <input value="<?php echo $row['Tin_phongtrong']; ?>"  name="Tin_phongtrong" id="Tin_phongtrong" type="number" id="example-palaceholder" class="form-control" placeholder="Số phòng trống">
                     </div>
                     <div class="col-md-3 mb-1">
                       <label for="example-palaceholder">Tổng phòng</label>
-                      <input name="Tin_phong" id="Tin_phong"  type="number" class="form-control" placeholder="Tống số phòng">
+                      <input value="<?php echo $row['Tin_phong']; ?>" name="Tin_phong" id="Tin_phong"  type="number" class="form-control" placeholder="Tống số phòng">
                     </div>
                     <div class="col-md-3 mb-1">
                       <label for="example-palaceholder">Ở Tối Đa (người/phòng)</label>
-                      <input type="number" name="Tin_toida" id="Tin_toida" class="form-control" placeholder="Tối đa số người ở 1 phòng">
+                      <input value="<?php echo $row['Tin_toida']; ?>" type="number" name="Tin_toida" id="Tin_toida" class="form-control" placeholder="Tối đa số người ở 1 phòng">
                     </div>
                   </div>
                   <div class="col-md-12 mb-2 d-flex justify-content-between">
                       <div class="col-md-3 mb-1">
                         <label for="validationCustomUsername">Diện tích phòng</label>
                         <div class="input-group">
-                          <input name="Tin_dientich" id="Tin_dientich" type="number" class="form-control" placeholder="Diện tích của phòng" required>
+                          <input value="<?php echo $row['Tin_dientich']; ?>" name="Tin_dientich" id="Tin_dientich" type="number" class="form-control" placeholder="Diện tích của phòng" required>
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend">m²</span>
                           </div>
@@ -128,7 +156,7 @@
                         <label for="validationCustomUsername">Giá phòng</label>
                         <div class="input-group">
 
-                          <input name="Tin_gia" id="Tin_gia" type="text" class="form-control" placeholder="Nhập đúng giá trị tiền" required>
+                          <input value="<?php echo $row['Tin_gia']; ?>"  name="Tin_gia" id="Tin_gia" type="text" class="form-control" placeholder="Nhập đúng giá trị tiền" required>
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupPrepend">VND</span>
                           </div>
@@ -137,6 +165,16 @@
                       <div class="col-md-3 mb-2">
                         <label for="validationCustomUsername">Giới Tính Ưu Tiên</label>
                         <select class="form-control" name="Tin_gtuutien" id="Tin_gtuutien" required>
+                          <option value="<?php echo $row['Tin_gtuutien'];?>">
+                              <?php if($row['Tin_gtuutien']==0){
+                                echo '--- Tất cả ---';
+                              } else if($row['Tin_gtuutien']==1){
+                                echo 'Nữ';
+                              } else{
+                                echo 'Nam';
+                              }
+                              ?>
+                          </option>
                           <option value="0">--- Tất cả ---</option>
                           <option value="1">Nữ</option>
                           <option value="2">Nam</option>
@@ -146,13 +184,13 @@
                   <div class="col-md-12 mb-2">
                     <div class="form-group mb-1">
                       <label for="example-static">Địa Chỉ</label>
-                      <input name="Tin_diachi" id="Tin_diachi" class="form-control" type="text" placeholder="Nhập địa chỉ chi tiết tại đây ...">
+                      <input value="<?php echo $row['Tin_diachi']; ?>" name="Tin_diachi" id="Tin_diachi" class="form-control" type="text" placeholder="Nhập địa chỉ chi tiết tại đây ...">
                     </div>
                   </div>
                   <div class="col-md-12  mb-2">
                     <div class="form-group">
                       <label for="example-static">Mô tả chi tiết</label>
-                      <textarea name="Tin_chitiet" id="Tin_chitiet" class="form-control" type="text" placeholder="Mô tả chi tiết tại đây ..." rows="6"></textarea>
+                      <textarea value="<?php echo $row['Tin_chitiet']; ?>" name="Tin_chitiet" id="Tin_chitiet" class="form-control" type="text" placeholder="Mô tả chi tiết tại đây ..." rows="6"></textarea>
                     </div>
                   </div>
                   <div class="form-group mb-12">

@@ -21,6 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
   while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
     $ds[] = array(
       'TT' => $TT,
+      'TinID' => $row1['TinID'],
       'Tin_title' =>$row1['Tin_title'],
       'Ltin_name' => $row1['Ltin_name'],
       'Description' => $row1['Description'],
@@ -141,14 +142,16 @@ if (!isset($_SESSION['loggedin'])) {
                           <td><?php echo $row1['Description'] ?></td>
                           <td>
                             <?php if ($row1['Tttindv_ID'] == 1) : ?>
-                                <button type="button" class="btn mb-2 btn-primary btn-sm">Đang phê duyệt</button>
+                                <button type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>
                             <?php endif; ?>
                             <?php if ($row1['Tttindv_ID'] == 2) : ?>
                                 <button type="button" class="btn mb-2 btn-success btn-sm">Thành Công</button>
                             <?php endif; ?></span>
                             <?php if ($row1['Tttindv_ID'] == 3) : ?>
                                 <button type="button" class="btn mb-2 btn-danger btn-sm">Từ Chối</button>
+                                <a href="danglaitin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-secondary btn-sm" title="Đăng Lại"><i class="fa-solid fa-repeat"></i></a>
                             <?php endif; ?></span>
+                            <a onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger btn-sm" href="./model/deletebantin.php?id=<?php echo $row1['TinID']; ?>" title="Xóa bản tin"><i class="fa-solid fa-xmark"></i></a>
                           </td>
                         </tr>
                         <?php endforeach; ?>
