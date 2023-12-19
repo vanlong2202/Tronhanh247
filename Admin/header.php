@@ -87,6 +87,16 @@ if (!isset($_SESSION['loggedin'])) {
             <!-- </a> -->
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
+          <li class="nav-item dropdown">
+              <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                <i class="fe fe-server"></i>
+                <span class="ml-3 item-text">Quản Lí Bản Tin</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="fileman">
+                <a class="nav-link pl-3" href="./dsbantincho.php"><span class="ml-1">Danh sách bản tin chờ</span></a>
+                <a class="nav-link pl-3" href="./dsbantinduyet.php"><span class="ml-1">Bản tin đã xác nhận</span></a>
+              </ul>
+            </li>
             <li class="nav-item dropdown">
               <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-16"></i>
@@ -107,7 +117,7 @@ if (!isset($_SESSION['loggedin'])) {
             </li>
             <li class="nav-item dropdown">
               <a href="#dsphong" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
+                <i class="fe fe-bookmark fe-16"></i>
                 <span class="ml-3 item-text">Quản Lí Bài Viết</span><span class="sr-only">(current)</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="dsphong">
@@ -122,7 +132,7 @@ if (!isset($_SESSION['loggedin'])) {
             </li>
             <li class="nav-item dropdown">
               <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-box fe-16"></i>
+                <i class="fe fe-mail"></i>
                 <span class="ml-3 item-text">Quản Lý Liên Hệ</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">

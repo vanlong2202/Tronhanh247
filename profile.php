@@ -139,7 +139,7 @@ if (!isset($_SESSION['loggedin'])) {
                           <td><?php echo $row1['Tin_title'] ?></td>
                           <td><?php echo $row1['Ltin_name'] ?></td>
                           <td><?php echo $row1['Tin_time'] ?></td>
-                          <td><?php echo $row1['Description'] ?></td>
+                          <td><p style="color: red;"><?php echo $row1['Description'] ?></p></td>
                           <td>
                             <?php if ($row1['Tttindv_ID'] == 1) : ?>
                                 <button type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>
