@@ -9,30 +9,111 @@
           <h2>LỰA CHỌN NỔI BẬT</h2>
         </div>
       </div>
-    </div>
     <div class="search-bar">
-      <form method="get" action="">
-        <div class="row">
-          <div class="col-md-2 text-center">
-            <input type="number" class="form-control" name="bedrooms" id="bedrooms" min="1" placeholder="Nhập số phòng ngủ">
+    <div class="card shadow mb-4">
+            <div class="card-body" style="background-color: #dedede;">
+              <div class="row">
+                <div class="col-md-12 mb-2 mt-3 d-flex justify-content-center">
+                  <div class="form-group col-md-8 mb-12 d-flex ">
+                    <input value="" type="text" name="FullName" id="FullName" class="form-control" placeholder="Tìm Kiếm Nhanh...">
+                  </div>
+                </div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center">
+                    <div class="col-md-2 mb-2">
+                      <select  class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
+                        <option selected disabled value="0">Chọn địa điểm</option>
+                        <option value="ho-chi-minh" >Hồ Chí Minh</option>
+													<option value="ha-noi" >Hà Nội</option>
+													<option value="da-nang" >Đà Nẵng</option>
+													<option value="thua-thien-hue" >Thừa Thiên Huế</option>
+													<option value="binh-duong" >Bình Dương</option>
+													<option value="an-giang" >An Giang</option>
+													<option value="ba-ria-vung-tau" >Bà Rịa - Vũng Tàu</option>
+													<option value="bac-giang" >Bắc Giang</option>
+													<option value="bac-kan" >Bắc Kạn</option>
+													<option value="bac-lieu" >Bạc Liêu</option>
+													<option value="bac-ninh" >Bắc Ninh</option>
+													<option value="ben-tre" >Bến Tre</option>
+													<option value="binh-phuoc" >Bình Phước</option>
+													<option value="binh-thuan" >Bình Thuận</option>
+													<option value="binh-dinh" >Bình Định</option>
+													<option value="ca-mau" >Cà Mau</option>
+													<option value="can-tho" >Cần Thơ</option>
+													<option value="cao-bang" >Cao Bằng</option>
+													<option value="gia-lai" >Gia Lai</option>
+													<option value="ha-giang" >Hà Giang</option>
+													<option value="ha-nam" >Hà Nam</option>
+													<option value="ha-tinh" >Hà Tĩnh</option>
+													<option value="hai-duong" >Hải Dương</option>
+													<option value="hai-phong" >Hải Phòng</option>
+													<option value="hau-giang" >Hậu Giang</option>
+													<option value="hoa-binh" >Hòa Bình</option>
+													<option value="hung-yen" >Hưng Yên</option>
+													<option value="khanh-hoa" >Khánh Hòa</option>
+													<option value="kien-giang" >Kiên Giang</option>
+													<option value="kon-tum" >Kon Tum</option>
+													<option value="lai-chau" >Lai Châu</option>
+													<option value="lam-dong" >Lâm Đồng</option>
+													<option value="lang-son" >Lạng Sơn</option>
+													<option value="lao-cai" >Lào Cai</option>
+													<option value="long-an" >Long An</option>
+													<option value="nam-dinh" >Nam Định</option>
+													<option value="nghe-an" >Nghệ An</option>
+													<option value="ninh-binh" >Ninh Bình</option>
+													<option value="ninh-thuan" >Ninh Thuận</option>
+													<option value="phu-tho" >Phú Thọ</option>
+													<option value="phu-yen" >Phú Yên</option>
+													<option value="quang-binh" >Quảng Bình</option>
+													<option value="quang-nam" >Quảng Nam</option>
+													<option value="quang-ngai" >Quảng Ngãi</option>
+													<option value="quang-ninh" >Quảng Ninh</option>
+													<option value="quang-tri" >Quảng Trị</option>
+													<option value="soc-trang" >Sóc Trăng</option>
+													<option value="son-la" >Sơn La</option>
+													<option value="tay-ninh" >Tây Ninh</option>
+													<option value="thai-binh" >Thái Bình</option>
+													<option value="thai-nguyen" >Thái Nguyên</option>
+													<option value="thanh-hoa" >Thanh Hóa</option>
+													<option value="tien-giang" >Tiền Giang</option>
+													<option value="tra-vinh" >Trà Vinh</option>
+													<option value="tuyen-quang" >Tuyên Quang</option>
+													<option value="vinh-long" >Vĩnh Long</option>
+													<option value="vinh-phuc" >Vĩnh Phúc</option>
+													<option value="yen-bai" >Yên Bái</option>
+													<option value="dak-lak" >Đắk Lắk</option>
+													<option value="dak-nong" >Đắk Nông</option>
+													<option value="dien-bien" >Điện Biên</option>
+													<option value="dong-nai" >Đồng Nai</option>
+													<option value="dong-thap" >Đồng Tháp</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 mb-1">
+                      <select  class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
+                        <option selected disabled value="0">Chọn loại hình</option>
+                        <option value="Phòng Trọ">Phòng Trọ</option>
+                        <option value="Ký túc xá (dorm)">Ký túc xá (dorm)</option>
+                        <option value="Chung cư mini">Chung cư mini</option>
+                        <option value="Cư xá">Cư xá</option>
+                        <option value="Homestay">Homestay</option>
+                        <option value="Trọ nhà nguyên căn">Trọ nhà nguyên căn</option>
+                        <option value="Trọ trong nhà chung chủ">Trọ trong nhà chung chủ</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                      <select  class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
+                        <option selected disabled value="0">Chọn giá</i></option>
+                        <option value="1">Không</option>
+                        <option value="2">Có</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 mb-1">
+                      <button type="submit" class="form-control btn btn-primary">Tìm Kiếm</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-2 text-center">
-            <input type="number" class="form-control" name="bathrooms" id="bathrooms" min="1" placeholder="Nhập số phòng tắm">
-          </div>
-          <div class="col-md-2 text-center">
-            <input type="number" class="form-control" name="price" id="price" min="0" placeholder="Nhập giá tối thiểu">
-          </div>
-          <div class="col-md-4 text-center">
-            <input type="number" class="form-control" name="area" id="area" min="0" placeholder="Nhập diện tích tối thiểu">
-          </div>
-          <div class="col-md-2 text-center">
-          <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
-          </div>
-        </div>
-        <!-- <div class="form-group text-center mt-3">
-          <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
-        </div> -->
-      </form>
+    </div>
     </div>
     <div class="row">
       <!-- Danh sách sản phẩm -->

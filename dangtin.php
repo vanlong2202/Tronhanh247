@@ -20,7 +20,7 @@
     </div>
   </div>
   <form action="model/addbantin.php" method="post">
-    <div class="contact-page section">
+  <div class="contact-page section">
     <div class="container">
         <div class="section-heading">
             <h6>| Đăng Bản Tin</h6>
@@ -55,7 +55,7 @@
               </div>
             </div>
           </div>
-      </div>
+    </div>
     </div>
       <div class="container">
           <div class="card shadow mb-4">
