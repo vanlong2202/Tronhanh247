@@ -1,8 +1,11 @@
   <?php include("header.php");
   include_once(__DIR__.'/model/config.php');
-  $sql = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE TinID = 6";
+  $sql = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Ltin_ID = 2 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
   $result = mysqli_query($conn,$sql);
   $row1 = mysqli_fetch_assoc($result);
+  $sql1 = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Ltin_ID = 3 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
+  $result1 = mysqli_query($conn,$sql1);
+  $row2 = mysqli_fetch_assoc($result1);
   ?>
   <div class="main-banner">
     <div class="owl-carousel owl-banner">
@@ -21,7 +24,7 @@
         <div class="col-lg-4">
           <div class="left-image">
             <img style="height: 500px; width: 422px;" src="<?php echo $row1['Tin_image1']; ?>" alt="">
-            <a href="property-details.html"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
+            <a href="chitietbantin.php?id=<?php echo $row1['TinID']; ?>"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
           </div>
         </div>
         <div class="col-lg-5">
@@ -176,79 +179,29 @@
                     <div class="col-lg-3">
                       <div class="info-table">
                         <ul>
-                          <li>Diện Tích Phòng <span><?php echo $row1['Tin_dientich']; ?> m²</span></li>
-                          <li>Giới Tính Ưu Tiên: <span><?php if($row1['Tin_gtuutien']==0){
+                          <li>Diện Tích Phòng <span><?php echo $row2['Tin_dientich']; ?> m²</span></li>
+                          <li>Giới Tính Ưu Tiên <span><?php if($row2['Tin_gtuutien']==0){
                               echo 'Tất cả';
-                            } else if($row['Tin_gtuutien']==1){
+                            } else if($row2['Tin_gtuutien']==1){
                               echo 'Nữ';
                             } else{
                               echo 'Nam';
                             }
                             ?></span></li>
-                          <li>Tổng Phòng <span><?php echo $row1['Tin_phong']; ?> phòng</span></li>
-                          <li>Phòng Khả Dụng <span><?php echo $row1['Tin_phongtrong']; ?> phòng</span></li>
-                          <li>Ở Tối Đa <span><?php echo $row1['Tin_toida']; ?> người/phòng</span></li>
+                          <li>Tổng Phòng <span><?php echo $row2['Tin_phong']; ?> phòng</span></li>
+                          <li>Phòng Khả Dụng <span><?php echo $row2['Tin_phongtrong']; ?> phòng</span></li>
+                          <li>Ở Tối Đa <span><?php echo $row2['Tin_toida']; ?> người/phòng</span></li>
                         </ul>
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <img style="height: 422px;" src="<?php echo $row1['Tin_image1']; ?>" alt="">
+                      <img style="height: 422px;" src="<?php echo $row2['Tin_image1']; ?>" alt="">
                     </div>
                     <div class="col-lg-3">
-                      <h3><?php echo $row1['Tin_title']; ?></h3>
-                      <p><?php echo $row1['Tin_chitiet']; ?>
+                      <h3><?php echo $row2['Tin_title']; ?></h3>
+                      <p><?php echo $row2['Tin_chitiet']; ?>
                       <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Xem chi tiết</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>250 m2</span></li>
-                          <li>Floor number <span>26th</span></li>
-                          <li>Number of rooms <span>5</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-02.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Detail Info About Villa</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Schedule a visit</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>320 m2</span></li>
-                          <li>Floor number <span>34th</span></li>
-                          <li>Number of rooms <span>6</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-03.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Penthouse</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Schedule a visit</a>
+                        <a href="chitietbantin.php?id=<?php echo $row2['TinID']; ?>"><i class="fa fa-calendar"></i> Xem chi tiết</a>
                       </div>
                     </div>
                   </div>
@@ -344,13 +297,13 @@
             <div class="col-lg-6">
               <div class="item phone">
                 <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6>090.999.9999<br><span>Phone Number</span></h6>
+                <h6>090.999.9999<br><span>Số điện thoại</span></h6>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="item email">
                 <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6>tn247@gmail.com<br><span>Business Email</span></h6>
+                <h6>tn247@gmail.com<br><span>Email</span></h6>
               </div>
             </div>
           </div>
@@ -393,25 +346,4 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="container">
-      <div class="col-lg-8">
-        <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
-        
-        Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
-
-  </body>
-</html>
+  <?php include("footer.php");?>

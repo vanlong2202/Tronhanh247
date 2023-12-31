@@ -126,10 +126,10 @@ if (!isset($_SESSION['loggedin'])) {
                         <tr>
                           <th>ID</th>
                           <th>Tiều đề</th>
-                          <th>Loại hình</th>
                           <th>Thời gian</th>
+                          <th>Trạng thái</th>
                           <th>Lí do từ chối (Nếu có)</th>
-                          <th>Trạng Thái</th>
+                          <th>Chức năng</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -137,21 +137,22 @@ if (!isset($_SESSION['loggedin'])) {
                         <tr>
                           <td>#<?php echo $row1['TT'] ?></td>
                           <td><?php echo $row1['Tin_title'] ?></td>
-                          <td><?php echo $row1['Ltin_name'] ?></td>
                           <td><?php echo $row1['Tin_time'] ?></td>
-                          <td><p style="color: red;"><?php echo $row1['Description'] ?></p></td>
-                          <td>
-                            <?php if ($row1['Tttindv_ID'] == 1) : ?>
+                          <td class="col-lg-2"><?php if ($row1['Tttindv_ID'] == 1) : ?>
                                 <button type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>
                             <?php endif; ?>
                             <?php if ($row1['Tttindv_ID'] == 2) : ?>
-                                <button type="button" class="btn mb-2 btn-success btn-sm">Thành Công</button>
+                                <button type="button" class="btn mb-2 btn-success pd-2 btn-sm">Thành Công</button>
                             <?php endif; ?></span>
                             <?php if ($row1['Tttindv_ID'] == 3) : ?>
                                 <button type="button" class="btn mb-2 btn-danger btn-sm">Từ Chối</button>
+                            <?php endif; ?></span></td>
+                          <td><p style="color: red;"><?php echo $row1['Description'] ?></p></td>
+                          <td>
+                            <a onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger btn-sm" href="./model/deletebantin.php?id=<?php echo $row1['TinID']; ?>" title="Xóa bản tin"><i class="fa-solid fa-xmark"></i></a>
+                            <?php if ($row1['Tttindv_ID'] == 3) : ?>
                                 <a href="danglaitin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-secondary btn-sm" title="Đăng Lại"><i class="fa-solid fa-repeat"></i></a>
                             <?php endif; ?></span>
-                            <a onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger btn-sm" href="./model/deletebantin.php?id=<?php echo $row1['TinID']; ?>" title="Xóa bản tin"><i class="fa-solid fa-xmark"></i></a>
                           </td>
                         </tr>
                         <?php endforeach; ?>
@@ -173,12 +174,4 @@ if (!isset($_SESSION['loggedin'])) {
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
-        
-        Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-      </div>
-    </div>
-  </footer>
+  <?php include("footer.php");?>

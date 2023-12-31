@@ -135,7 +135,7 @@
                        AND (area >= $area OR $area IS NULL)";
       } else {
           // Truy vấn mặc định mà không có tham số tìm kiếm
-          $danhsach = "SELECT * FROM tbltindv";
+          $danhsach = "SELECT * FROM tbltindv WHERE Tin_svip = 1 ORDER BY Tin_time DESC LIMIT 6";
       }
 
       $result = mysqli_query($conn, $danhsach);
@@ -167,7 +167,7 @@
         <?php foreach ($dataroms as $room) : ?>
           <div class="col-lg-4 col-md-6">
             <div class="item">
-              <a href="property-details.html"><img style="height: 260px; width: 350px;" src="<?php echo $room['Tin_image1']; ?>" alt=""></a>
+              <a href="chitietbantin.php?id=<?php echo $room['TinID']; ?>"><img style="height: 260px; width: 350px;" src="<?php echo $room['Tin_image1']; ?>" alt=""></a>
               <span class="category"><?php echo $room['Tin_diachi']; ?></span>
               <h6><?php echo number_format($room['Tin_gia']); ?> VNĐ</h6>
               <h4><a href="property-details.html"><?php echo $room['Tin_title']; ?></a></h4>

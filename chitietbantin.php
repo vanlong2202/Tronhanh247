@@ -61,7 +61,7 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                 <div class="main-content">
                     <span class="category"><?php echo $row1['Tin_diachi']; ?></span>
                     <h4><?php echo $row1['Tin_title']; ?></h4>
-                    <h5 class="mb-3">Thông tin chi tiết</h5>
+                    <h5 class="mb-3">THÔNG TIN DỊCH VỤ</h5>
                     <table style="border-radius: 8px;" class="table table-bordered">
                         <thead>
                         <tr>
@@ -108,11 +108,36 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                     </table>
                   <div>
                     <h4></h4>
-                    <h5 class="mb-3">Mô tả chi tiết</h5>
+                    <h5 class="mb-3">MÔ TẢ CHI TIẾT</h5>
                     <p>
                         <?php echo $Tin_diachi; ?>
                       <?php echo $row1['Tin_chitiet']; ?>
                     </p>
+                  </div>
+                  <div>
+                    <h4></h4>
+                    <h5 class="mb-3">LIÊN HỆ CHÍNH CHỦ</h5>
+                    <table style="border-radius: 8px;" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="col-lg-1 text-center" scope="col"><i class="fa-solid fa-user"></i></th>
+                            <td colspan="3"><span style="font-weight: bold; color: #0045A8;"><?php echo $row1['FullName']; ?></span></td>
+                        </tr>
+                        <tr>
+                            <th class="col-lg-1 text-center" scope="col"><i class="fa-solid fa-phone"></i></th>
+                            <td colspan="3"><span style="font-weight: bold; color: #0045A8;"><?php echo $row1['Phone']; ?></span></td>
+                        </tr>
+                        <tr>
+                            <th class="col-lg-1 text-center" scope="col"><i class="fa-solid fa-envelope"></i></th>
+                            <td colspan="3"><span style="font-weight: bold; color: #0045A8;"><?php echo $row1['Email']; ?></span></td>
+                        </tr>
+                        <tr>
+                            <th class="col-lg-1 text-center" scope="col"><i class="fa-brands fa-facebook"></i></th>
+                            <td colspan="3"><span style="font-weight: bold; color: #0045A8;"><?php echo $row1['Facebook']; ?></span></td>
+                        </tr>
+                        <!-- Thêm các trường khác tương tự cho các thông tin khác -->
+                        </thead>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -144,8 +169,8 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                         <a href="tel:<?php echo $row1['Phone']; ?>"><input  name="" type="submit" class="btn btn-danger" value="GỌI NGAY"> </a>
                     </div>
                     <div class="mt-4 text-center">
-                        <a href="tel:<?php echo $row1['Phone']; ?>"><input  name="" type="submit" class="btn mb-2 btn-primary btn-sm" value="Báo tin không hợp lệ"> </a>
-                        <a href="tel:<?php echo $row1['Phone']; ?>"><input  name="" type="submit" class="btn mb-2 btn-primary btn-sm" value="Báo tin hết phòng"> </a>
+                        <a href="" data-toggle="modal" data-target="#myModal"><input  name="" type="submit" class="btn mb-2 btn-primary btn-sm" value="Báo tin không hợp lệ"> </a>
+                        <a href="" data-toggle="modal" data-target="#myModal1"><input  name="" type="submit" class="btn mb-2 btn-primary btn-sm" value="Báo tin hết phòng"> </a>
                     </div>
                 </div>
               </div>
@@ -185,25 +210,92 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
     </div>
   </div>
 </div>
-
-
-
-<footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. </p>
-      </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">BÁO TIN KHÔNG HỢP LỆ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form action="model/cf_baotin.php" method="post">
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                          <div class="form-group mb-1">
+                          <label for="example-static">Mã bản tin</label>
+                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="text" placeholder="Tiêu đề bản tin..." readonly>
+                          </div>
+                      </div>
+                      <div class="col-md-12  mb-2">
+                          <div class="form-group">
+                          <!-- <label for="example-static">Lý do từ chối</label> -->
+                          <textarea name="Baocao_chitiet" id="Baocao_chitiet" class="form-control" type="text" placeholder="Bạn hãy mô tả thêm thông tin" rows="6"></textarea>
+                          </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                          <div class="form-group mb-1">
+                          <label for="example-static">Điền thông tin để TroNhanh247 liên lạc với bạn khi cần thiết</label>
+                          <input value="" name="Baocao_phone" id="Baocao_phone" class="form-control mb-2" type="text" placeholder="Số điện thoại">
+                          <input value="" name="Baocao_email" id="Baocao_email" class="form-control" type="email" placeholder="Email">
+                          </div>
+                      </div>
+                      <div class="form-group d-grid gap-2 col-2 mx-auto mb-3">
+                          <input name="" type="submit" class="btn btn-danger" value="Xác Nhận"> 
+                      </div>
+                    </div>
+                  </div>
+              </form>
+            </div>
+        </div>
     </div>
-  </footer>
-
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
-
-  </body>
-</html>
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">BÁO TIN HẾT PHÒNG</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form action="model/cf_baotin.php" method="post">
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 mb-2">
+                          <div class="form-group mb-1">
+                          <label for="example-static">Mã bản tin</label>
+                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="text" placeholder="Tiêu đề bản tin..." readonly>
+                          </div>
+                      </div>
+                      <div class="col-md-12  mb-2">
+                          <div class="form-group">
+                          <!-- <label for="example-static">Lý do từ chối</label> -->
+                          <textarea name="Baocao_chitiet" id="Baocao_chitiet" class="form-control" type="text" placeholder="Bạn hãy mô tả thêm thông tin" rows="6"></textarea>
+                          </div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                          <div class="form-group mb-1">
+                          <label for="example-static">Điền thông tin để TroNhanh247 liên lạc với bạn khi cần thiết</label>
+                          <input value="" name="Baocao_phone" id="Baocao_phone" class="form-control mb-2" type="text" placeholder="Số điện thoại">
+                          <input value="" name="Baocao_email" id="Baocao_email" class="form-control" type="email" placeholder="Email">
+                          </div>
+                      </div>
+                      <div class="form-group d-grid gap-2 col-2 mx-auto mb-3">
+                          <input name="" type="submit" class="btn btn-danger" value="Xác Nhận"> 
+                      </div>
+                    </div>
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<?php include("footer.php");?>

@@ -21,11 +21,10 @@
     $Tin_toida = $_POST['Tin_toida'];
     $Tin_tuquan = $_POST['Tin_tuquan'];
     $Tttindv_ID = 1;
-    $Tin_image1 = $_POST['Tin_image1'];
     $Tin_gtuutien = $_POST['Tin_gtuutien'];
     $Tin_time = date("Y-m-d H:i:s");
     $Description = '';
-    $editbantin = "UPDATE tbltindv SET Tin_title='$Tin_title',Tin_chitiet='$Tin_chitiet',Ltin_ID='$Ltin_ID',Tin_hinhthuc='$Tin_hinhthuc',Tin_diachi='$Tin_diachi',Tin_gia='$Tin_gia',Tin_dientich='$Tin_dientich',Tin_phong='$Tin_phong',Tin_phongtrong='$Tin_phongtrong',Tin_toida='$Tin_toida',Tin_tuquan='$Tin_tuquan',Tin_time='$Tin_time',Tttindv_ID='$Tttindv_ID',Tin_image1='$Tin_image1',Tin_gtuutien='$Tin_gtuutien', Description='$Description' Where TinID = '$TinID'";
+    $editbantin = "UPDATE tbltindv SET Tin_title='$Tin_title',Tin_chitiet='$Tin_chitiet',Ltin_ID='$Ltin_ID',Tin_hinhthuc='$Tin_hinhthuc',Tin_diachi='$Tin_diachi',Tin_gia='$Tin_gia',Tin_dientich='$Tin_dientich',Tin_phong='$Tin_phong',Tin_phongtrong='$Tin_phongtrong',Tin_toida='$Tin_toida',Tin_tuquan='$Tin_tuquan',Tin_time='$Tin_time',Tttindv_ID='$Tttindv_ID',Tin_gtuutien='$Tin_gtuutien', Description='$Description' Where TinID = '$TinID'";
     mysqli_query($conn, $editbantin);
     header("Location: ../profile.php"); 
 ?>
