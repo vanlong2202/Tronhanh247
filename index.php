@@ -1,22 +1,15 @@
-  <?php include("header.php"); ?>
+  <?php include("header.php");
+  include_once(__DIR__.'/model/config.php');
+  $sql = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE TinID = 6";
+  $result = mysqli_query($conn,$sql);
+  $row1 = mysqli_fetch_assoc($result);
+  ?>
   <div class="main-banner">
     <div class="owl-carousel owl-banner">
       <div class="item item-1">
         <div class="header-text">
           <span class="category">Việt Nam, <em>2023</em></span>
           <h2>TÌM NHANH, KIẾM DỄ TRỌ MỚI TOÀN QUỐC</h2>
-        </div>
-      </div>
-      <div class="item item-2">
-        <div class="header-text">
-          <span class="category">Melbourne, <em>Australia</em></span>
-          <h2>Be Quick!<br>Get the best villa in town</h2>
-        </div>
-      </div>
-      <div class="item item-3">
-        <div class="header-text">
-          <span class="category">Miami, <em>South Florida</em></span>
-          <h2>Act Now!<br>Get the highest level penthouse</h2>
         </div>
       </div>
     </div>
@@ -27,48 +20,101 @@
       <div class="row">
         <div class="col-lg-4">
           <div class="left-image">
-            <img src="assets/images/featured.jpg" alt="">
+            <img style="height: 500px; width: 422px;" src="<?php echo $row1['Tin_image1']; ?>" alt="">
             <a href="property-details.html"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
           </div>
         </div>
         <div class="col-lg-5">
           <div class="section-heading">
             <h6>| Nhà, Căn Hộ Cho Thuê </h6>
-            <h2>NGÔI NHÀ TRONG MƠ</h2>
+            <h2><?php echo $row1['Tin_title'];?></h2>
           </div>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Best useful links ?
+                  Thông Tin Dịch Vụ
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div id="collapseOne" class="accordion-collapse collapse  " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                Get <strong>the best villa</strong> website template in HTML CSS and Bootstrap for your business. TemplateMo provides you the <a href="https://www.google.com/search?q=best+free+css+templates" target="_blank">best free CSS templates</a> in the world. Please tell your friends about it.</div>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <ul>
+                        <li>Tổng phòng: <span style="font-weight: bold;"><?php echo $row1['Tin_phong']; ?></span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <ul>
+                        <li>Phòng trống: <span style="font-weight: bold;"><?php echo $row1['Tin_phongtrong']; ?></span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <ul>
+                        <li>Ở tối đa: <span style="font-weight: bold;"><?php echo $row1['Tin_toida']; ?></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <ul>
+                        <li>Giới tính ưu tiên: <span style="font-weight: bold;"><?php if($row1['Tin_gtuutien']==0){
+                              echo 'Tất cả';
+                            } else if($row['Tin_gtuutien']==1){
+                              echo 'Nữ';
+                            } else{
+                              echo 'Nam';
+                            }
+                            ?></span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                      <ul>
+                        <li>Tự quản: <span style="font-weight: bold;"><?php if($row1['Tin_tuquan']==1){
+                              echo 'Không';
+                            } else{
+                              echo 'Có';
+                            }
+                            ?></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <ul>
+                        <li>Địa chỉ chi tiết: <span style="font-weight: bold;"><?php echo $row1['Tin_diachichitiet']; ?></span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  How does this work ?
+                  Mô Tả Chi Tiết
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <?php echo $row1['Tin_chitiet'];?>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Why is Villa Agency the best ?
+                  Thông Tin Liên Hệ
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <ul>
+                    <li>Tên chủ: <span style="font-weight: bold;"><?php echo $row1['FullName'];?></span></li>
+                    <li>Số điện thoại: <span style="font-weight: bold;"><?php echo $row1['Phone'];?></span></li>
+                    <li>Email: <span style="font-weight: bold;"><?php echo $row1['Email'];?></span></li>
+                    <li>Facebook: <span style="font-weight: bold;"><?php echo $row1['Facebook'];?></span></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -79,19 +125,19 @@
             <ul>
               <li>
                 <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>250 m2<br><span>Total Flat Space</span></h4>
+                <h4><?php echo $row1['Tin_dientich']; ?> m²<br><span>Diện tích phòng</span></h4>
               </li>
               <li>
                 <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>Contract<br><span>Contract Ready</span></h4>
+                <h4>+84 <?php echo $row1['Phone']; ?><br><span>Số điện thoại liên hệ</span></h4>
               </li>
               <li>
                 <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
-                <h4>Payment<br><span>Payment Process</span></h4>
+                <h4><?php echo number_format($row1['Tin_gia']); ?> VND<br><span>Giá dịch vụ</span></h4>
               </li>
               <li>
                 <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
-                <h4>Safety<br><span>24/7 Under Control</span></h4>
+                <h4><?php echo $row1['Tin_hinhthuc']; ?><br><span>Hình thức</span></h4>
               </li>
             </ul>
           </div>
@@ -111,7 +157,7 @@
         <div class="col-lg-12">
           <div class="tabs-content">
             <div class="row">
-              <div class="nav-wrapper ">
+              <!-- <div class="nav-wrapper ">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartment</button>
@@ -123,30 +169,36 @@
                     <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
                   </li>
                 </ul>
-              </div>              
+              </div>               -->
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
                   <div class="row">
                     <div class="col-lg-3">
                       <div class="info-table">
                         <ul>
-                          <li>Total Flat Space <span>185 m2</span></li>
-                          <li>Floor number <span>26th</span></li>
-                          <li>Number of rooms <span>4</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
+                          <li>Diện Tích Phòng <span><?php echo $row1['Tin_dientich']; ?> m²</span></li>
+                          <li>Giới Tính Ưu Tiên: <span><?php if($row1['Tin_gtuutien']==0){
+                              echo 'Tất cả';
+                            } else if($row['Tin_gtuutien']==1){
+                              echo 'Nữ';
+                            } else{
+                              echo 'Nam';
+                            }
+                            ?></span></li>
+                          <li>Tổng Phòng <span><?php echo $row1['Tin_phong']; ?> phòng</span></li>
+                          <li>Phòng Khả Dụng <span><?php echo $row1['Tin_phongtrong']; ?> phòng</span></li>
+                          <li>Ở Tối Đa <span><?php echo $row1['Tin_toida']; ?> người/phòng</span></li>
                         </ul>
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <img src="assets/images/deal-01.jpg" alt="">
+                      <img style="height: 422px;" src="<?php echo $row1['Tin_image1']; ?>" alt="">
                     </div>
                     <div class="col-lg-3">
-                      <h4>Extra Info About Property</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. 
-                      <br><br>When you need free CSS templates, you can simply type TemplateMo in any search engine website. In addition, you can type TemplateMo Portfolio, TemplateMo One Page Layouts, etc.</p>
+                      <h3><?php echo $row1['Tin_title']; ?></h3>
+                      <p><?php echo $row1['Tin_chitiet']; ?>
                       <div class="icon-button">
-                        <a href="property-details.html"><i class="fa fa-calendar"></i> Schedule a visit</a>
+                        <a href="property-details.html"><i class="fa fa-calendar"></i> Xem chi tiết</a>
                       </div>
                     </div>
                   </div>
@@ -213,8 +265,8 @@
       <div class="row">
         <div class="col-lg-4 offset-lg-4">
           <div class="section-heading text-center">
-            <h6>| Video View</h6>
-            <h2>Get Closer View & Different Feeling</h2>
+            <h6>| Thông tin về chúng tôi</h6>
+            <h2>HƠN 50.000 CHỦ TRỌ TIN TƯỞNG TRỌ MỚI</h2>
           </div>
         </div>
       </div>
@@ -225,10 +277,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
-          <div class="video-frame">
-            <img src="assets/images/video-frame.jpg" alt="">
-            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
-          </div>
+          <!-- <div class="video-frame">
+            <a href="https://www.youtube.com/watch?v=3Ltxw6YIFU4&ab_channel=Tr%E1%BB%8DM%E1%BB%9Bi-K%C3%AAnhth%C3%B4ngtinPh%C3%B2ngtr%E1%BB%8D%2CNh%C3%A0chothu%C3%AA" target="_blank"><i class="fa fa-play"></i></a>
+          </div> -->
         </div>
       </div>
     </div>
@@ -242,20 +293,20 @@
             <div class="row">
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="34" data-speed="1000"></h2>
-                   <p class="count-text ">Buildings<br>Finished Now</p>
+                  <h2 class="timer count-title count-number" data-to="555" data-speed="1000"></h2>
+                   <p class="count-text ">Bản Tin được<br>cập nhật hàng tháng</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="12" data-speed="1000"></h2>
-                  <p class="count-text ">Years<br>Experience</p>
+                  <h2 class="timer count-title count-number" data-to="1000" data-speed="1000"></h2>
+                  <p class="count-text ">Lượt truy cập sử<br>dụng hệ thống</p>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="24" data-speed="1000"></h2>
-                  <p class="count-text ">Awwards<br>Won 2023</p>
+                  <h2 class="timer count-title count-number" data-to="2024" data-speed="1000"></h2>
+                  <p class="count-text ">Hứa hẹn<br>phát triển</p>
                 </div>
               </div>
             </div>

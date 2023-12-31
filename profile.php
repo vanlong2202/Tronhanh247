@@ -110,8 +110,8 @@ if (!isset($_SESSION['loggedin'])) {
       <div class="contact-page section">
     <div class="container">
         <div class="section-heading">
-            <h6>| Bản tin đã đăng</h6>
-          </div>
+          <h6>| Bản tin đã đăng</h6>
+        </div>
         <div class="card shadow mb-4">
             <div class="card-header">
               <h6 class="card-title">DANH SÁCH BẢN TIN ĐÃ ĐĂNG</h6>

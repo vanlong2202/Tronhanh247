@@ -135,7 +135,7 @@
                        AND (area >= $area OR $area IS NULL)";
       } else {
           // Truy vấn mặc định mà không có tham số tìm kiếm
-          $danhsach = "SELECT * FROM tblrooms WHERE availability = 1";
+          $danhsach = "SELECT * FROM tbltindv";
       }
 
       $result = mysqli_query($conn, $danhsach);
@@ -145,17 +145,18 @@
       while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $dataroms[] = [
           'TT' => $TT,
-          'user_id' => $row['user_id'],
-          'title' => $row['title'],
-          'description' => $row['description'],
-          'price' => $row['price'],
-          'img' => $row['img'],
-          'bedrooms' => $row['bedrooms'],
-          'bathrooms' => $row['bathrooms'],
-          'area' => $row['area'],
-          'floor' => $row['floor'],
-          'parking' => $row['parking'],
-          'availability' => $row['availability']
+          'TinID' => $row['TinID'],
+          'Tin_title' => $row['Tin_title'],
+          'Tin_gia' => $row['Tin_gia'],
+          'Tin_phong' => $row['Tin_phong'],
+          'Tin_dientich' => $row['Tin_dientich'],
+          'Tin_toida' => $row['Tin_toida'],
+          'Tin_phongtrong' => $row['Tin_phongtrong'],
+          'Tin_diachi' => $row['Tin_diachi'],
+          'Tin_diachichitiet' => $row['Tin_diachichitiet'],
+          'Tin_tuquan' => $row['Tin_tuquan'],
+          'Tin_image1' => $row['Tin_image1'],
+          'Tin_time' => $row['Tin_time'],
         ];
         $TT++;
       }
@@ -166,19 +167,16 @@
         <?php foreach ($dataroms as $room) : ?>
           <div class="col-lg-4 col-md-6">
             <div class="item">
-              <a href="property-details.html"><img src="<?php echo $room['img']; ?>" alt=""></a>
-              <span class="category"><?php echo $room['title']; ?></span>
-              <h6><?php echo number_format($room['price'], 2); ?> VNĐ</h6>
-              <h4><a href="property-details.html"><?php echo $room['description']; ?></a></h4>
+              <a href="property-details.html"><img style="height: 260px; width: 350px;" src="<?php echo $room['Tin_image1']; ?>" alt=""></a>
+              <span class="category"><?php echo $room['Tin_diachi']; ?></span>
+              <h6><?php echo number_format($room['Tin_gia']); ?> VNĐ</h6>
+              <h4><a href="property-details.html"><?php echo $room['Tin_title']; ?></a></h4>
+              <p><?php echo $room['Tin_diachichitiet']; ?></p>
               <ul>
-                <li>Phòng ngủ: <span><?php echo $room['bedrooms']; ?></span></li>
-                <li>Phòng tắm: <span><?php echo $room['bathrooms']; ?></span></li>
-                <li>Diện tích: <span><?php echo $room['area']; ?>m2</span></li>
-                <li>Tầng: <span><?php echo $room['floor']; ?></span></li>
-                <li>Chỗ đỗ xe: <span><?php echo $room['parking']; ?></span></li>
+                <li><span><?php echo $room['Tin_time']; ?></span></li>
               </ul>
               <div class="main-button">
-                <a href="property-details.html">THÔNG TIN CHI TIẾT</a>
+                <a href="chitietbantin.php?id=<?php echo $room['TinID']; ?>">THÔNG TIN CHI TIẾT</a>
               </div>
             </div>
           </div>

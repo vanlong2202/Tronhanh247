@@ -143,10 +143,81 @@
                         </select>
                       </div>
                   </div>
-                  <div class="col-md-12 mb-2">
-                    <div class="form-group mb-1">
+                  <div class="col-md-12 mb-2 d-flex justify-content-between">
+                    <div class="col-md-2 mb-2">
                       <label for="example-static">Địa Chỉ</label>
-                      <input name="Tin_diachi" id="Tin_diachi" class="form-control" type="text" placeholder="Nhập địa chỉ chi tiết tại đây ...">
+                      <select  class="form-control" name="Tin_diachi" id="Tin_diachi" required>
+                        <option selected disabled value="0">Chọn địa điểm</option>
+                        <option value="ho-chi-minh" >Hồ Chí Minh</option>
+													<option value="ha-noi" >Hà Nội</option>
+													<option value="da-nang" >Đà Nẵng</option>
+													<option value="thua-thien-hue" >Thừa Thiên Huế</option>
+													<option value="binh-duong" >Bình Dương</option>
+													<option value="an-giang" >An Giang</option>
+													<option value="ba-ria-vung-tau" >Bà Rịa - Vũng Tàu</option>
+													<option value="bac-giang" >Bắc Giang</option>
+													<option value="bac-kan" >Bắc Kạn</option>
+													<option value="bac-lieu" >Bạc Liêu</option>
+													<option value="bac-ninh" >Bắc Ninh</option>
+													<option value="ben-tre" >Bến Tre</option>
+													<option value="binh-phuoc" >Bình Phước</option>
+													<option value="binh-thuan" >Bình Thuận</option>
+													<option value="binh-dinh" >Bình Định</option>
+													<option value="ca-mau" >Cà Mau</option>
+													<option value="can-tho" >Cần Thơ</option>
+													<option value="cao-bang" >Cao Bằng</option>
+													<option value="gia-lai" >Gia Lai</option>
+													<option value="ha-giang" >Hà Giang</option>
+													<option value="ha-nam" >Hà Nam</option>
+													<option value="ha-tinh" >Hà Tĩnh</option>
+													<option value="hai-duong" >Hải Dương</option>
+													<option value="hai-phong" >Hải Phòng</option>
+													<option value="hau-giang" >Hậu Giang</option>
+													<option value="hoa-binh" >Hòa Bình</option>
+													<option value="hung-yen" >Hưng Yên</option>
+													<option value="khanh-hoa" >Khánh Hòa</option>
+													<option value="kien-giang" >Kiên Giang</option>
+													<option value="kon-tum" >Kon Tum</option>
+													<option value="lai-chau" >Lai Châu</option>
+													<option value="lam-dong" >Lâm Đồng</option>
+													<option value="lang-son" >Lạng Sơn</option>
+													<option value="lao-cai" >Lào Cai</option>
+													<option value="long-an" >Long An</option>
+													<option value="nam-dinh" >Nam Định</option>
+													<option value="nghe-an" >Nghệ An</option>
+													<option value="ninh-binh" >Ninh Bình</option>
+													<option value="ninh-thuan" >Ninh Thuận</option>
+													<option value="phu-tho" >Phú Thọ</option>
+													<option value="phu-yen" >Phú Yên</option>
+													<option value="quang-binh" >Quảng Bình</option>
+													<option value="quang-nam" >Quảng Nam</option>
+													<option value="quang-ngai" >Quảng Ngãi</option>
+													<option value="quang-ninh" >Quảng Ninh</option>
+													<option value="quang-tri" >Quảng Trị</option>
+													<option value="soc-trang" >Sóc Trăng</option>
+													<option value="son-la" >Sơn La</option>
+													<option value="tay-ninh" >Tây Ninh</option>
+													<option value="thai-binh" >Thái Bình</option>
+													<option value="thai-nguyen" >Thái Nguyên</option>
+													<option value="thanh-hoa" >Thanh Hóa</option>
+													<option value="tien-giang" >Tiền Giang</option>
+													<option value="tra-vinh" >Trà Vinh</option>
+													<option value="tuyen-quang" >Tuyên Quang</option>
+													<option value="vinh-long" >Vĩnh Long</option>
+													<option value="vinh-phuc" >Vĩnh Phúc</option>
+													<option value="yen-bai" >Yên Bái</option>
+													<option value="dak-lak" >Đắk Lắk</option>
+													<option value="dak-nong" >Đắk Nông</option>
+													<option value="dien-bien" >Điện Biên</option>
+													<option value="dong-nai" >Đồng Nai</option>
+													<option value="dong-thap" >Đồng Tháp</option>
+                      </select>
+                    </div>
+                    <div class="col-md-9 mb-2">
+                      <div class="form-group mb-1">
+                        <label for="example-static">Địa Chỉ Chi Tiết</label>
+                        <input name="Tin_diachichitiet" id="Tin_diachichitiet" class="form-control" type="text" placeholder="Nhập địa chỉ chi tiết tại đây ...">
+                      </div>
                     </div>
                   </div>
                   <div class="col-md-12  mb-2">
@@ -156,9 +227,9 @@
                     </div>
                   </div>
                   <div class="form-group mb-12">
-                          <label for="example-fileinput">Tải hình ảnh lên</label>
-                          <input type="file" name="Tin_image1" id="Tin_image1" class="form-control-file">
-                        </div>
+                    <label for="example-fileinput">Tải hình ảnh lên</label>
+                    <input type="file" name="Tin_image1" id="Tin_image1" class="form-control-file">
+                  </div>
                 </div>
               </div>
           </div>
