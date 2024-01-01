@@ -62,10 +62,6 @@
                           if($_SESSION['level'] == 2){
                             echo '<li><a href="admin">Admin</a></li>';
                           }
-                          else
-                          {
-                            echo '<li><a href="dangtin.php">Đăng Tin</a></li>';
-                          }
                           echo '<li><a href="profile.php"><i class="fa-solid fa-user"></i> Xin Chào, '.$_SESSION['username'].'</a></li>';
                           echo '<li><a href="model/deletesession.php"><i class="fa-solid fa-right-to-bracket"></i>Đăng Xuất</a></li>';
                         }

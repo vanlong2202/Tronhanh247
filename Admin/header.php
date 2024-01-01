@@ -95,8 +95,10 @@ if (!isset($_SESSION['loggedin'])) {
               <ul class="collapse list-unstyled pl-4 w-100" id="fileman">
                 <a class="nav-link pl-3" href="./dsbantincho.php"><span class="ml-1">Danh sách bản tin chờ</span></a>
                 <a class="nav-link pl-3" href="./dsbantinduyet.php"><span class="ml-1">Bản tin đã xác nhận</span></a>
-                <a class="nav-link pl-3" href="./dsbantinduyet.php"><span class="ml-1">Báo cáo bản tin</span></a>
-                <a class="nav-link pl-3" href="./dsbantinduyet.php"><span class="ml-1">Báo cáo đã xác thực</span></a>
+                <a class="nav-link pl-3" href="./dsbantinsvip.php"><span class="ml-1">Bản tin ưu tiên</span></a>
+                <a class="nav-link pl-3" href="./dsbantinsvipcp.php"><span class="ml-1">Danh sách bản tin ưu tiên</span></a>
+                <a class="nav-link pl-3" href="./dsbaocaotin.php"><span class="ml-1">Báo cáo bản tin</span></a>
+                <a class="nav-link pl-3" href="./dsbaocaocp.php"><span class="ml-1">Báo cáo đã xác thực</span></a>
               </ul>
             </li>
             <li class="nav-item dropdown">

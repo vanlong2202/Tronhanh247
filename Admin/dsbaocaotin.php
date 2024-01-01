@@ -1,19 +1,19 @@
 <?php include("header.php"); 
 include_once(__DIR__ . '/model/config.php');
-$sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID INNER JOIN tbltaikhoan on tbltindv.Tk_ID = tbltaikhoan.Tk_ID WHERE tbltindv.Tttindv_ID = 1";
-  $result1 = mysqli_query($conn, $sql_bantin);
+$sql_baocao = "SELECT * from tblbaocao INNER JOIN tbltindv on tblbaocao.TinID = tbltindv.TinID WHERE Baocao_trangthai = 1";
+  $result1 = mysqli_query($conn, $sql_baocao);
   $ds = [];
   $TT = 1;
   while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
     $ds[] = array(
       'TT' => $TT,
+      'BaocaoID' => $row1['BaocaoID'],
       'TinID' => $row1['TinID'],
       'Tin_title' =>$row1['Tin_title'],
-      'Ltin_name' => $row1['Ltin_name'],
-      'Description' => $row1['Description'],
-      'Tin_time' => $row1['Tin_time'],
-      'Tttindv_ID' => $row1['Tttindv_ID'],
-      'FullName' => $row1['FullName'],
+      'Baocao_chitiet' => $row1['Baocao_chitiet'],
+      'Baocao_phone' => $row1['Baocao_phone'],
+      'Baocao_email' => $row1['Baocao_email'],
+      'Baocao_trangthai' => $row1['Baocao_trangthai'],
     );
     $TT++;
   }
@@ -22,7 +22,7 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="mb-2 page-title">Danh Sách Bản Tin Cần Phê Duyệt</h2>
+              <h2 class="mb-2 page-title">Danh Sách Báo Cáo Bản Tin</h2>
               <!-- <a href="AddTK.php" type="button" class="btn mb-2 btn-info">Thêm Mới</a> -->
               <p class="card-text"></p>
               <div class="row my-4">
@@ -34,11 +34,11 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
                       <table class="table datatables" id="dataTable-1">
                         <thead>
                           <tr>
-                            <th>STT</th>
+                            <th>ID Bản Tin</th>
                             <th>Tiêu đề</th>
-                            <th>Loại hình</th>
-                            <th>Thời gian</th>
-                            <th>Người đăng</th>
+                            <th>Nội dung</th>
+                            <th>Phone</th>
+                            <th>Email</th>
                             <th>Trạng thái</th>
                             <th>Chức Năng</th>
                           </tr>
@@ -46,18 +46,16 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
                         <tbody>
                         <?php foreach ($ds as $row1) : ?>
                           <tr>
-                            <td><?php echo $row1['TT']; ?></td>
+                            <td><?php echo $row1['TinID']; ?></td>
                             <td><?php echo $row1['Tin_title']; ?></td>
-                            <td><?php echo $row1['Ltin_name']; ?></td>
-                            <td><?php echo $row1['Tin_time']; ?></td>
-                            <td><?php echo $row1['FullName']; ?></td>
-                            <td class="col-lg-2"><button type="button" class="<?php if($row1['Tttindv_ID'] == 1){
+                            <td><?php echo $row1['Baocao_chitiet']; ?></td>
+                            <td><?php echo $row1['Baocao_phone']; ?></td>
+                            <td><?php echo $row1['Baocao_email']; ?></td>
+                            <td class="col-lg-2"><button type="button" class="<?php if($row1['Baocao_trangthai'] == 1){
                                 echo "btn mb-2 btn-primary";
-                            } ?>">Chờ Phê Duyệt</button></td>
-                            <td class="col-lg-2">
-                              <a href="model/cpbantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-success ">Phê Duyệt</a>
-                              <!-- <a class="btn mb-2 btn-danger " href="admin/tuchoibantin.php?id=<?php echo $row1['TinID']; ?>"><i class="dw dw-delete-3"></i>Từ Chối</a> -->
-                              <a href="tuchoibantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-danger">Từ Chối</a>
+                            } ?>">Chờ Xác Thực</button></td>
+                            <td>
+                              <a href="model/cp_baocao.php?id=<?php echo $row1['BaocaoID']; ?>" type="button" class="btn mb-2 btn-success ">Xác Thực</a>
                             </td>
                           </tr>
                           <?php endforeach; ?>

@@ -61,11 +61,13 @@
     $Tin_phongtrong = $_POST['Tin_phongtrong'];
     $Tin_toida = $_POST['Tin_toida'];
     $Tin_tuquan = $_POST['Tin_tuquan'];
+    $Tin_svip = 0;
     $Tttindv_ID = 1;
     $Tin_image1 = $_POST['Tin_image1'];
     $Tin_gtuutien = $_POST['Tin_gtuutien'];
     $Tin_time = date("Y-m-d H:i:s");
-    $addbantin = "INSERT INTO tbltindv(Tk_ID,Tin_title,Tin_chitiet,Ltin_ID,Tin_hinhthuc,Tin_diachi,Tin_diachichitiet,Tin_gia,Tin_dientich,Tin_phong,Tin_phongtrong,Tin_toida,Tin_tuquan,Tin_time,Tttindv_ID,Tin_image1,Tin_image2,Tin_image3,Tin_gtuutien) VALUES ('$_SESSION[tk_id]','$Tin_title','$Tin_chitiet','$Ltin_ID','$Tin_hinhthuc','$Tin_diachi','$Tin_diachichitiet','$Tin_gia','$Tin_dientich','$Tin_phong','$Tin_phongtrong','$Tin_toida','$Tin_tuquan','$Tin_time','$Tttindv_ID','$imagelink','$imagelink1','$imagelink2','$Tin_gtuutien')";
+    $Tin_trangthai = 0;
+    $addbantin = "INSERT INTO tbltindv(Tk_ID,Tin_title,Tin_chitiet,Ltin_ID,Tin_hinhthuc,Tin_diachi,Tin_diachichitiet,Tin_gia,Tin_dientich,Tin_phong,Tin_phongtrong,Tin_toida,Tin_tuquan,Tin_time,Tttindv_ID,Tin_image1,Tin_image2,Tin_image3,Tin_gtuutien,Tin_svip,Tin_trangthai) VALUES ('$_SESSION[tk_id]','$Tin_title','$Tin_chitiet','$Ltin_ID','$Tin_hinhthuc','$Tin_diachi','$Tin_diachichitiet','$Tin_gia','$Tin_dientich','$Tin_phong','$Tin_phongtrong','$Tin_toida','$Tin_tuquan','$Tin_time','$Tttindv_ID','$imagelink','$imagelink1','$imagelink2','$Tin_gtuutien','$Tin_svip','$Tin_trangthai')";
     mysqli_query($conn, $addbantin);
     header("Location: ../profile.php"); 
 ?>

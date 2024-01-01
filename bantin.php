@@ -1,4 +1,25 @@
-<!-- jdj -->
+<?php include("header.php");
+  if (!isset($_SESSION['loggedin'])) {
+    // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+    header("Location: login.php");
+    exit();
+  }
+  include_once(__DIR__ . '/model/config.php');
+  $sql = "SELECT * from tbltaikhoan WHERE Tk_ID ='$_SESSION[tk_id]'";
+  $result = mysqli_query($conn,$sql);
+  $row = mysqli_fetch_assoc($result);
+?>
+<div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <span class="breadcrumb"><a href="#">TRANG CHỦ</a>  /  BẢN TIN</span>
+          <h3>DANH SÁCH BẢN TIN</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jdj -->
 <style>
   #room-list {
     position: absolute;
@@ -35,12 +56,6 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 offset-lg-4">
-        <div class="section-heading text-center">
-          <h6>| Bài Viết</h6>
-          <h2>LỰA CHỌN NỔI BẬT</h2>
-        </div>
-      </div>
       <div class="search-bar">
         <div class="card shadow mb-4">
           <div class="card-body" style="background-color: #dedede;">
@@ -49,7 +64,7 @@
                 <div class="col-md-12 mb-2 mt-3 d-flex justify-content-center">
                   <div class="form-group col-md-8 mb-12 d-flex search-results">
                     <form id="search-form" class="col-md-12 mb-12">
-                      <input type="text" class="form-control" name="timkiem" id="timkiem" placeholder="Nhập số phòng ngủ, địa chỉ, số phòng tắm, ...">
+                      <input type="text" class="form-control" name="timkiem" id="timkiem" placeholder="Tìm Kiếm Nhanh">
                     </form>
 
                     <div id="room-list" class="card shadow mb-4 col-md-8 ">
@@ -145,8 +160,12 @@
                   <div class="col-md-2 mb-2">
                     <select class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
                       <option selected disabled value="0">Chọn giá</i></option>
-                      <option value="1">Không</option>
-                      <option value="2">Có</option>
+                      <option value="1">Tất cả</option>
+                      <option value="2">Dưới 1.000.000 VND</option>
+                      <option value="2">1.000.000 VND - 2.000.000 VND</option>
+                      <option value="2">2.000.000 VND - 3.000.000 VND</option>
+                      <option value="2">3.000.000 VND - 5.000.000 VND</option>
+                      <option value="2">Trên 5.000.000 VND</option>
                     </select>
                   </div>
                   <div class="col-md-2 mb-1">
@@ -164,7 +183,7 @@
       <?php
       include_once(__DIR__ . '/model/config.php');
 
-      $search_query = "SELECT * FROM tbltindv WHERE Tin_svip = 1 AND Tin_trangthai = 1 AND Tttindv_id = 2 ORDER BY Tin_time DESC LIMIT 6";
+      $search_query = "SELECT * FROM tbltindv WHERE 1";
 
       if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $location = isset($_GET["Tin_diachi"]) ? $_GET["Tin_diachi"] : "0";
@@ -259,3 +278,4 @@
     });
   });
 </script>
+<?php include("footer.php");?>

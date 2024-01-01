@@ -1,9 +1,9 @@
   <?php include("header.php");
   include_once(__DIR__.'/model/config.php');
-  $sql = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Ltin_ID = 2 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
+  $sql = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Tin_svip = 1 AND Ltin_ID = 2 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
   $result = mysqli_query($conn,$sql);
   $row1 = mysqli_fetch_assoc($result);
-  $sql1 = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Ltin_ID = 3 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
+  $sql1 = "SELECT * FROM tbltindv inner join tbltaikhoan on tbltindv.Tk_ID=tbltaikhoan.Tk_ID WHERE Tin_svip = 1 AND Ltin_ID = 3 AND Tin_trangthai = 1 ORDER BY Tin_time DESC LIMIT 1";
   $result1 = mysqli_query($conn,$sql1);
   $row2 = mysqli_fetch_assoc($result1);
   ?>
@@ -63,7 +63,7 @@
                       <ul>
                         <li>Giới tính ưu tiên: <span style="font-weight: bold;"><?php if($row1['Tin_gtuutien']==0){
                               echo 'Tất cả';
-                            } else if($row['Tin_gtuutien']==1){
+                            } else if($row1['Tin_gtuutien']==1){
                               echo 'Nữ';
                             } else{
                               echo 'Nam';

@@ -1,6 +1,6 @@
 <?php include("header.php"); 
 include_once(__DIR__ . '/model/config.php');
-$sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID INNER JOIN tbltaikhoan on tbltindv.Tk_ID = tbltaikhoan.Tk_ID WHERE tbltindv.Tttindv_ID = 1";
+$sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID INNER JOIN tbltaikhoan on tbltindv.Tk_ID = tbltaikhoan.Tk_ID WHERE tbltindv.Tttindv_ID = 2 AND tbltindv.Tin_svip = 1";
   $result1 = mysqli_query($conn, $sql_bantin);
   $ds = [];
   $TT = 1;
@@ -13,6 +13,7 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
       'Description' => $row1['Description'],
       'Tin_time' => $row1['Tin_time'],
       'Tttindv_ID' => $row1['Tttindv_ID'],
+      'Tin_svip' => $row1['Tin_svip'],
       'FullName' => $row1['FullName'],
     );
     $TT++;
@@ -22,7 +23,7 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="mb-2 page-title">Danh Sách Bản Tin Cần Phê Duyệt</h2>
+              <h2 class="mb-2 page-title">Danh Sách Bản Tin Ưu Tiên</h2>
               <!-- <a href="AddTK.php" type="button" class="btn mb-2 btn-info">Thêm Mới</a> -->
               <p class="card-text"></p>
               <div class="row my-4">
@@ -51,13 +52,13 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
                             <td><?php echo $row1['Ltin_name']; ?></td>
                             <td><?php echo $row1['Tin_time']; ?></td>
                             <td><?php echo $row1['FullName']; ?></td>
-                            <td class="col-lg-2"><button type="button" class="<?php if($row1['Tttindv_ID'] == 1){
-                                echo "btn mb-2 btn-primary";
-                            } ?>">Chờ Phê Duyệt</button></td>
-                            <td class="col-lg-2">
-                              <a href="model/cpbantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-success ">Phê Duyệt</a>
-                              <!-- <a class="btn mb-2 btn-danger " href="admin/tuchoibantin.php?id=<?php echo $row1['TinID']; ?>"><i class="dw dw-delete-3"></i>Từ Chối</a> -->
-                              <a href="tuchoibantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-danger">Từ Chối</a>
+                            <td>
+                                <?php if($row1['Tin_svip'] == 1): ?>
+                                    <button type="button" class="btn mb-2 btn-primary">Ưu Tiên</button></td>
+                                <?php endif; ?>
+                            <td>
+                                <a title="Xóa Vị Trí Ưu Tiên" href="./model/cf_editsvip1.php?sid=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-danger fe fe-star"></a>
+                                <a title="Xóa Bản Tin" onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger fe fe-trash-2" href="./model/cf_deletebantin.php?id=<?php echo $row1['TinID']; ?>"></a>
                             </td>
                           </tr>
                           <?php endforeach; ?>
