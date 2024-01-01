@@ -38,7 +38,7 @@
                     <?php
                         include_once(__DIR__.'/model/config.php');
 
-                        $danhsach = "SELECT MenuName, Link FROM `tblmenu` WHERE IsActive = 1";
+                        $danhsach = "SELECT MenuName, Link FROM `tblmenu` WHERE IsActive = 1 ORDER BY levels ASC";
 
                         $result = mysqli_query($conn,$danhsach);
 

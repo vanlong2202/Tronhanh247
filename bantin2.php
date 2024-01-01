@@ -5,8 +5,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <span class="breadcrumb"><a href="#">TRANG CHỦ</a>  /  BẢN TIN</span>
-          <h3>TÌM KIẾM PHÒNG TRỌ</h3>
+          <span class="breadcrumb"><a href="index.php">TRANG CHỦ</a>  /  BẢN TIN</span>
+          <h3>TÌM KIẾM Ở GHÉP</h3>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
         $location = isset($_GET["Tin_diachi"]) ? $_GET["Tin_diachi"] : "0";
         $type = isset($_GET["Tin_hinhthuc"]) ? $_GET["Tin_hinhthuc"] : "0";
         $price = isset($_GET["Tin_gia"]) ? $_GET["Tin_gia"] : "0";
-        $search_query = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 1";
+        $search_query = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 3";
         if ($location != "0") {
           $search_query .=" AND Tin_diachi = '$location'";
         }
@@ -218,7 +218,7 @@
         $search_query .=" LIMIT $item_pre_page OFFSET $offset";
         $result = mysqli_query($conn, $search_query);
 
-        $cont = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 1";
+        $cont = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 3";
         $total = mysqli_query($conn, $cont);
         $total = $total->num_rows;
         $totalPage = ceil($total / $item_pre_page);
