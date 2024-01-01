@@ -10,6 +10,6 @@
     //echo $del_sql ;exit;
     mysqli_query($conn,$del_sql);
 
-    header("Location: ../index.php");
+    header("Location: ../dsmenu.php");
     
 ?>

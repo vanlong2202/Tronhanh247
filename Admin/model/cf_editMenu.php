@@ -13,5 +13,5 @@
     mysqli_query($conn,$editMenu);
 
     // Them xong chuyen ve trang danh sach
-    header("Location: ../index.php");
+    header("Location: ../dsmenu.php");
 ?>

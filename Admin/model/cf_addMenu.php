@@ -10,5 +10,5 @@
 
     mysqli_query($conn,$themMenu);
 
-    header("Location: ../index.php"); 
+    header("Location: ../dsmenu.php"); 
 ?>

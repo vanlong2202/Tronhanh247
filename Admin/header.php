@@ -82,12 +82,19 @@ if (!isset($_SESSION['loggedin'])) {
         <nav class="vertnav navbar navbar-light">
           <!-- nav bar -->
           <div class="mx-auto center-block w-100 mb-2 d-flex">
-            <!-- <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html"> -->
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="../index.php">
               <img id="logo" class="w-100 mb-4 d-flex" src="./assets/images/image-removebg-preview-1.png">
-            <!-- </a> -->
+            </a>
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
-          <li class="nav-item dropdown">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="index.php">
+                <i class="fe fe-layers fe-16"></i>
+                <span class="ml-3 item-text">Thông Kê</span>
+                <span class="badge badge-pill badge-primary">Admin</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
               <a href="#fileman" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-server"></i>
                 <span class="ml-3 item-text">Quản Lí Bản Tin</span>
@@ -108,10 +115,7 @@ if (!isset($_SESSION['loggedin'])) {
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
                 <li class="nav-item active">
-                  <a class="nav-link pl-3" href="./index.php"><span class="ml-1 item-text">Danh Sách Menu</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./AddMenu.php"><span class="ml-1 item-text">Thêm Menu Mới</span></a>
+                  <a class="nav-link pl-3" href="./dsmenu.php"><span class="ml-1 item-text">Danh Sách Menu</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="./AddMenu.php"><span class="ml-1 item-text">Thêm Menu Mới</span></a>
@@ -164,13 +168,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </li>
               </ul>
             </li>
-            <li class="nav-item w-100">
-              <a class="nav-link" href="#">
-                <i class="fe fe-layers fe-16"></i>
-                <span class="ml-3 item-text">Thông Kê</span>
-                <span class="badge badge-pill badge-primary">Admin</span>
-              </a>
-            </li>
+            
           </ul>
           <div class="btn-box w-100 mt-4 mb-1">
             <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
