@@ -7,7 +7,7 @@ $conditions = [];
 // Kiểm tra xem có tham số tìm kiếm nào được truyền không
 if (!empty($_GET['timkiem'])) {
   $searchTerm = mysqli_real_escape_string($conn, $_GET['timkiem']);
-  $conditions[] = "Tin_title LIKE '%$searchTerm%' OR Tin_diachi LIKE '%$searchTerm%'";
+  $conditions[] = "Tin_title LIKE '%$searchTerm%' OR Tin_diachi LIKE '%$searchTerm%' AND Tin_trangthai = 1";
 }
 
 // Tạo truy vấn SQL dựa trên điều kiện

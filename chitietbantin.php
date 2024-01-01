@@ -7,7 +7,7 @@ $result = mysqli_query($conn,$sql);
 $row1 = mysqli_fetch_assoc($result);
 $Tin_diachi = $row1['Tin_diachi'];
 $TinID = $row1['TinID'];
-$ds = "SELECT * FROM tbltindv WHERE Tin_diachi = '$Tin_diachi' AND TinID != $TinID"; // Thay đổi truy vấn SQL
+$ds = "SELECT * FROM tbltindv WHERE Tin_trangthai = 1 AND Tin_diachi = '$Tin_diachi' AND TinID != $TinID"; // Thay đổi truy vấn SQL
 $result2 = mysqli_query($conn, $ds);
 $ds = [];
 $TT = 1;
@@ -192,10 +192,10 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
         <?php foreach ($ds as $row) : ?>
           <div class="col-lg-4 col-md-6">
             <div class="item">
-              <a href="property-details.html"><img style="height: 260px; width: 350px;" src="<?php echo $row['Tin_image1']; ?>" alt=""></a>
+              <a href="chitietbantin.php?id=<?php echo $row['TinID']; ?>"><img style="height: 260px; width: 350px;" src="<?php echo $row['Tin_image1']; ?>" alt=""></a>
               <span class="category"><?php echo $row['Tin_diachi']; ?></span>
               <h6><?php echo number_format($row['Tin_gia']); ?> VNĐ</h6>
-              <h4><a href="property-details.html"><?php echo $row['Tin_title']; ?></a></h4>
+              <h4><a href="chitietbantin.php?id=<?php echo $row['TinID']; ?>"><?php echo $row['Tin_title']; ?></a></h4>
               <p><?php echo $row['Tin_diachichitiet']; ?></p>
               <ul>
                 <li><span><?php echo $row['Tin_time']; ?></span></li>

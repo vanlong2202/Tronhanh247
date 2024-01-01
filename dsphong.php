@@ -49,7 +49,7 @@
                 <div class="col-md-12 mb-2 mt-3 d-flex justify-content-center">
                   <div class="form-group col-md-8 mb-12 d-flex search-results">
                     <form id="search-form" class="col-md-12 mb-12">
-                      <input type="text" class="form-control" name="timkiem" id="timkiem" placeholder="Nhập số phòng ngủ, địa chỉ, số phòng tắm, ...">
+                      <input type="text" class="form-control" name="timkiem" id="timkiem" placeholder="Tìm Kiếm Nhanh">
                     </form>
 
                     <div id="room-list" class="card shadow mb-4 col-md-8 ">
@@ -60,7 +60,7 @@
                   </div>
                 </div>
               </div>
-              <form method="get" action="">
+              <form method="get" action="bantin.php">
                 <div class="col-md-12 mb-2 d-flex justify-content-center">
                   <div class="col-md-2 mb-2">
                     <select class="form-control" name="Tin_diachi" id="Tin_diachi" required>

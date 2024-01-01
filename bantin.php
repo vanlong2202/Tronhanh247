@@ -183,7 +183,7 @@
       <?php
       include_once(__DIR__ . '/model/config.php');
 
-      $search_query = "SELECT * FROM tbltindv WHERE 1";
+      $search_query = "SELECT * FROM tbltindv Where Tin_trangthai = 1";
 
       if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $location = isset($_GET["Tin_diachi"]) ? $_GET["Tin_diachi"] : "0";
