@@ -2,7 +2,7 @@
 include_once(__DIR__ . '/model/config.php');
 
 // Khởi tạo mảng điều kiện
-$conditions = [];
+$conditions = ["Tin_trangthai = 1"];
 
 // Kiểm tra xem có tham số tìm kiếm nào được truyền không
 if (!empty($_GET['timkiem'])) {

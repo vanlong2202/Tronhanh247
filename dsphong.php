@@ -143,10 +143,13 @@
                     </select>
                   </div>
                   <div class="col-md-2 mb-2">
-                    <select class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
+                    <select class="form-control" name="Tin_gia" id="Tin_gia" required>
                       <option selected disabled value="0">Chọn giá</i></option>
-                      <option value="1">Không</option>
-                      <option value="2">Có</option>
+                      <option value="1">Dưới 1.000.000 VND</option>
+                      <option value="2">1.000.000 VND - 2.000.000 VND</option>
+                      <option value="3">2.000.000 VND - 3.000.000 VND</option>
+                      <option value="4">3.000.000 VND - 5.000.000 VND</option>
+                      <option value="5">Trên 5.000.000 VND</option>
                     </select>
                   </div>
                   <div class="col-md-2 mb-1">
@@ -180,7 +183,21 @@
         }
 
         if ($price != "0") {
-          $search_query .= " AND Tin_gia = '$price'";
+          if($price == 1){
+            $search_query .= " AND Tin_gia < 1000000";
+          }
+          if($price == 2){
+              $search_query .= " AND Tin_gia >= 1000000 AND Tin_gia <= 2000000";
+          }
+          if($price == 3){
+              $search_query .= " AND Tin_gia >= 2000000 AND Tin_gia <= 3000000";
+          }
+          if($price == 4){
+              $search_query .= " AND Tin_gia >= 3000000 AND Tin_gia <= 5000000";
+          }
+          if($price == 5){
+              $search_query .= " AND Tin_gia > 5000000";
+          }
         }
       }
 

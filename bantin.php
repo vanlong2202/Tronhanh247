@@ -1,13 +1,5 @@
 <?php include("header.php");
-  if (!isset($_SESSION['loggedin'])) {
-    // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
-    header("Location: login.php");
-    exit();
-  }
   include_once(__DIR__ . '/model/config.php');
-  $sql = "SELECT * from tbltaikhoan WHERE Tk_ID ='$_SESSION[tk_id]'";
-  $result = mysqli_query($conn,$sql);
-  $row = mysqli_fetch_assoc($result);
 ?>
 <div class="page-heading header-text">
     <div class="container">
@@ -158,14 +150,13 @@
                     </select>
                   </div>
                   <div class="col-md-2 mb-2">
-                    <select class="form-control" name="Tin_tuquan" id="Tin_tuquan" required>
+                    <select class="form-control" name="Tin_gia" id="Tin_gia" required>
                       <option selected disabled value="0">Chọn giá</i></option>
-                      <option value="1">Tất cả</option>
-                      <option value="2">Dưới 1.000.000 VND</option>
+                      <option value="1">Dưới 1.000.000 VND</option>
                       <option value="2">1.000.000 VND - 2.000.000 VND</option>
-                      <option value="2">2.000.000 VND - 3.000.000 VND</option>
-                      <option value="2">3.000.000 VND - 5.000.000 VND</option>
-                      <option value="2">Trên 5.000.000 VND</option>
+                      <option value="3">2.000.000 VND - 3.000.000 VND</option>
+                      <option value="4">3.000.000 VND - 5.000.000 VND</option>
+                      <option value="5">Trên 5.000.000 VND</option>
                     </select>
                   </div>
                   <div class="col-md-2 mb-1">
@@ -199,7 +190,22 @@
         }
 
         if ($price != "0") {
-          $search_query .= " AND Tin_gia = '$price'";
+            if($price == 1){
+                $search_query .= " AND Tin_gia < 1000000";
+            }
+            if($price == 2){
+                $search_query .= " AND Tin_gia >= 1000000 AND Tin_gia <= 2000000";
+            }
+            if($price == 3){
+                $search_query .= " AND Tin_gia >= 2000000 AND Tin_gia <= 3000000";
+            }
+            if($price == 4){
+                $search_query .= " AND Tin_gia >= 3000000 AND Tin_gia <= 5000000";
+            }
+            if($price == 5){
+                $search_query .= " AND Tin_gia > 5000000";
+            }
+        //   $search_query .= " AND Tin_gia = '$price'";
         }
       }
 
