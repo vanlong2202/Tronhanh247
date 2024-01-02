@@ -195,7 +195,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <img style="height: 422px;" src="<?php echo $row2['Tin_image1']; ?>" alt="">
+                      <img style="height: 422px;width: 666px;" src="<?php echo $row2['Tin_image1']; ?>" alt="">
                     </div>
                     <div class="col-lg-3">
                       <h3><?php echo $row2['Tin_title']; ?></h3>
