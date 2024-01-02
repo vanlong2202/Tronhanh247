@@ -124,21 +124,6 @@ if (!isset($_SESSION['loggedin'])) {
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a href="#dsphong" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-bookmark fe-16"></i>
-                <span class="ml-3 item-text">Quản Lí Bài Viết</span><span class="sr-only">(current)</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="dsphong">
-                <li class="nav-item active">
-                  <a class="nav-link pl-3" href="./dsphonga.php"><span class="ml-1 item-text">Danh Sách Bài Viết</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./AddRoom.php"><span class="ml-1 item-text">Thêm Bài Viết Mới</span></a>
-                </li>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
               <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-mail"></i>
                 <span class="ml-3 item-text">Quản Lý Liên Hệ</span>

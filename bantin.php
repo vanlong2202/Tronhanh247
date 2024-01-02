@@ -182,14 +182,14 @@
       
       
       if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        $location = isset($_GET["Tin_diachi"]) ? $_GET["Tin_diachi"] : "0";
+        $Tin_diachi = isset($_GET["Tin_diachi"]) ? $_GET["Tin_diachi"] : "0";
         $type = isset($_GET["Tin_hinhthuc"]) ? $_GET["Tin_hinhthuc"] : "0";
         $price = isset($_GET["Tin_gia"]) ? $_GET["Tin_gia"] : "0";
         $search_query = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 1";
-        if ($location != "0") {
-          $search_query .=" AND Tin_diachi = '$location'";
+        if ($Tin_diachi != "0") {
+          $search_query .=" AND Tin_diachi = '$Tin_diachi'";
         }
-
+ 
         if ($type != "0") {
           $search_query .= " AND Tin_hinhthuc = '$type'";
         }

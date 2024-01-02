@@ -54,7 +54,7 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
                             <td class="col-lg-2"><button type="button" class="<?php if($row1['Tttindv_ID'] == 1){
                                 echo "btn mb-2 btn-primary";
                             } ?>">Chờ Phê Duyệt</button></td>
-                            <td class="col-lg-2">
+                            <td class="col-lg-3">
                               <a href="model/cpbantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-success ">Phê Duyệt</a>
                               <!-- <a class="btn mb-2 btn-danger " href="admin/tuchoibantin.php?id=<?php echo $row1['TinID']; ?>"><i class="dw dw-delete-3"></i>Từ Chối</a> -->
                               <a href="tuchoibantin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-danger">Từ Chối</a>

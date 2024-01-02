@@ -51,14 +51,14 @@ $sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID
                             <td><?php echo $row1['Ltin_name']; ?></td>
                             <td><?php echo $row1['Tin_time']; ?></td>
                             <td><?php echo $row1['FullName']; ?></td>
-                            <td>
+                            <td class="col-lg-2">
                                 <?php if($row1['Tttindv_ID'] == 2): ?>
                                     <button type="button" class="btn mb-2 btn-success">Đã Duyệt</button></td>
                                 <?php endif; ?>
                                 <?php if($row1['Tttindv_ID'] == 3): ?>
                                     <button type="button" class="btn mb-2 btn-danger">Từ Chối</button></td>
                                 <?php endif; ?>
-                            <td>
+                            <td class="col-lg-2">
                               <a onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger " href="./model/cf_deletebantin.php?id=<?php echo $row1['TinID']; ?>"><i class="dw dw-delete-3"></i>Xóa Bản Tin</a>
                             </td>
                           </tr>

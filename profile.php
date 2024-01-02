@@ -150,9 +150,14 @@ if (!isset($_SESSION['loggedin'])) {
                           <td><p style="color: red;"><?php echo $row1['Description'] ?></p></td>
                           <td>
                             <a onclick="return confirm('Bạn có muốn xoá bản tin này không ?');" class="btn mb-2 btn-danger btn-sm" href="./model/deletebantin.php?id=<?php echo $row1['TinID']; ?>" title="Xóa bản tin"><i class="fa-solid fa-xmark"></i></a>
-                            <?php if ($row1['Tttindv_ID'] == 3) : ?>
+                            <a href="chitietbantin.php?id=<?php echo $row1['TinID']; ?>" class="btn mb-2 btn-info btn-sm" title="Xem Chi Tiết">
+                              <i class="fas fa-eye"></i>
+                            </a>
+                            <?php if ($row1['Tttindv_ID'] == 3) { ?>
                                 <a href="danglaitin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-secondary btn-sm" title="Đăng Lại"><i class="fa-solid fa-repeat"></i></a>
-                            <?php endif; ?></span>
+                            <?php } else { ?>
+                              <a href="danglaitin.php?id=<?php echo $row1['TinID']; ?>" type="button" class="btn mb-2 btn-secondary btn-sm" title="Đăng Lại"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <?php } ?></span>
                           </td>
                         </tr>
                         <?php endforeach; ?>
