@@ -29,9 +29,6 @@
             if($current_page < $totalPage - 3){ ?>
                 <li><a href="?per_page=<?php echo $item_pre_page; ?>&page=<?php echo $totalPage;?>">>></a></li>
         <?php }?>
-        <!-- <li><a class="is_active" href="?per_page=2&page=2">2</a></li>
-        <li><a href="?per_page=2&page=3">3</a></li>
-        <li><a href="#">>></a></li> -->
         </ul>
     </div>
 </div>

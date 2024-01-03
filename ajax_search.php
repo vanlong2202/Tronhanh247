@@ -10,7 +10,7 @@ if (!empty($_GET['timkiem'])) {
 
 $danhsach = "SELECT * FROM tbltindv";
 if (!empty($conditions)) {
-  $danhsach .= " WHERE " . implode(' AND ', $conditions);
+  $danhsach .= " WHERE " . implode(' AND ', $conditions)." LIMIT 6";
 }
 $result = mysqli_query($conn, $danhsach);
 
