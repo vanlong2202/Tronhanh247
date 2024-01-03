@@ -1,6 +1,6 @@
 <?php include("header.php"); 
 include_once(__DIR__ . '/model/config.php');
-$sql_baocao = "SELECT * from tblbaocao INNER JOIN tbltindv on tblbaocao.TinID = tbltindv.TinID WHERE Baocao_trangthai = 2";
+$sql_baocao = "SELECT * from tblbaocao INNER JOIN tbltindv on tblbaocao.TinID = tbltindv.TinID WHERE Baocao_trangthai = 2 ORDER BY Tin_time DESC";
   $result1 = mysqli_query($conn, $sql_baocao);
   $ds = [];
   $TT = 1;

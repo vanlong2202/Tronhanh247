@@ -1,6 +1,6 @@
 <?php include("header.php"); 
 include_once(__DIR__ . '/model/config.php');
-$sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID INNER JOIN tbltaikhoan on tbltindv.Tk_ID = tbltaikhoan.Tk_ID WHERE tbltindv.Tttindv_ID = 2 AND tbltindv.Tin_svip = 1";
+$sql_bantin = "SELECT * from tbltindv INNER JOIN tbl_lbantin on tbltindv.Ltin_ID = tbl_lbantin.Ltin_ID INNER JOIN tbltaikhoan on tbltindv.Tk_ID = tbltaikhoan.Tk_ID WHERE tbltindv.Tttindv_ID = 2 AND tbltindv.Tin_svip = 1 ORDER BY Tin_time DESC";
   $result1 = mysqli_query($conn, $sql_bantin);
   $ds = [];
   $TT = 1;
