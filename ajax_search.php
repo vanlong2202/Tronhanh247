@@ -1,30 +1,23 @@
 <?php
 include_once(__DIR__ . '/model/config.php');
 
-// Khởi tạo mảng điều kiện
 $conditions = ["Tin_trangthai = 1"];
 
-// Kiểm tra xem có tham số tìm kiếm nào được truyền không
 if (!empty($_GET['timkiem'])) {
   $searchTerm = mysqli_real_escape_string($conn, $_GET['timkiem']);
   $conditions[] = "Tin_title LIKE '%$searchTerm%' OR Tin_diachi LIKE '%$searchTerm%' AND Tin_trangthai = 1";
 }
 
-// Tạo truy vấn SQL dựa trên điều kiện
 $danhsach = "SELECT * FROM tbltindv";
 if (!empty($conditions)) {
   $danhsach .= " WHERE " . implode(' AND ', $conditions);
 }
-
-// Thực hiện truy vấn SQL
 $result = mysqli_query($conn, $danhsach);
 
-// Kiểm tra lỗi SQL
 if (!$result) {
   die('Lỗi truy vấn: ' . mysqli_error($conn));
 }
 
-// Xử lý kết quả và hiển thị
 $dataroms = [];
 $TT = 1;
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -46,7 +39,6 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
   $TT++;
 }
 
-// Hiển thị kết quả tìm kiếm
 foreach ($dataroms as $room) {
 ?>
   <div class="col-lg-12" href="chitietbantin.php?id=<?php echo $room['TinID']; ?>">

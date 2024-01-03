@@ -136,7 +136,7 @@ if (!isset($_SESSION['loggedin'])) {
                       <?php foreach ($ds as $row1) : ?>
                         <tr>
                           <td>#<?php echo $row1['TT'] ?></td>
-                          <td><?php echo $row1['Tin_title'] ?></td>
+                          <td class="col-lg-4"><?php echo $row1['Tin_title'] ?></td>
                           <td><?php echo $row1['Tin_time'] ?></td>
                           <td class="col-lg-2"><?php if ($row1['Tttindv_ID'] == 1) : ?>
                                 <button type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>

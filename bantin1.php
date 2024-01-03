@@ -210,15 +210,14 @@
             if($price == 5){
                 $search_query .= " AND Tin_gia > 5000000";
             }
-        //   $search_query .= " AND Tin_gia = '$price'";
         }
-        $item_pre_page = !empty($_GET['per_page'])?($_GET['per_page']):3; //số bản tin trong 1 page
+        $item_pre_page = !empty($_GET['per_page'])?($_GET['per_page']):6;
         $current_page = !empty($_GET['page'])?($_GET['page']):1;
         $offset = ($current_page - 1)* $item_pre_page;
-        $search_query .=" LIMIT $item_pre_page OFFSET $offset";
+        $search_query .=" ORDER BY Tin_time DESC LIMIT $item_pre_page OFFSET $offset";
         $result = mysqli_query($conn, $search_query);
 
-        $cont = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 1";
+        $cont = "SELECT * FROM tbltindv  Where Tin_trangthai = 1 AND Ltin_ID = 2";
         $total = mysqli_query($conn, $cont);
         $total = $total->num_rows;
         $totalPage = ceil($total / $item_pre_page);
