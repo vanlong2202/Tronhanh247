@@ -139,13 +139,13 @@ if (!isset($_SESSION['loggedin'])) {
                           <td class="col-lg-4"><?php echo $row1['Tin_title'] ?></td>
                           <td><?php echo $row1['Tin_time'] ?></td>
                           <td class="col-lg-2"><?php if ($row1['Tttindv_ID'] == 1) : ?>
-                                <button type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>
+                                <button style="width: 122px;" type="button" class="btn mb-2 btn-primary btn-sm">Đang Phê Duyệt</button>
                             <?php endif; ?>
                             <?php if ($row1['Tttindv_ID'] == 2) : ?>
-                                <button type="button" class="btn mb-2 btn-success pd-2 btn-sm">Thành Công</button>
+                                <button style="width: 122px;" type="button" class="btn mb-2 btn-success pd-2 btn-sm">Thành Công</button>
                             <?php endif; ?></span>
                             <?php if ($row1['Tttindv_ID'] == 3) : ?>
-                                <button type="button" class="btn mb-2 btn-danger btn-sm">Từ Chối</button>
+                                <button style="width: 122px;" type="button" class="btn mb-2 btn-danger btn-sm">Từ Chối</button>
                             <?php endif; ?></span></td>
                           <td><p style="color: red;"><?php echo $row1['Description'] ?></p></td>
                           <td>

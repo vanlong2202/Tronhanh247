@@ -7,7 +7,7 @@ $result = mysqli_query($conn,$sql);
 $row1 = mysqli_fetch_assoc($result);
 $Tin_diachi = $row1['Tin_diachi'];
 $TinID = $row1['TinID'];
-$ds = "SELECT * FROM tbltindv WHERE Tin_trangthai = 1 AND Tin_diachi = '$Tin_diachi' AND TinID != $TinID"; // Thay đổi truy vấn SQL
+$ds = "SELECT * FROM tbltindv WHERE Tin_trangthai = 1 AND Tin_diachi = '$Tin_diachi' AND TinID != $TinID LIMIT 3";
 $result2 = mysqli_query($conn, $ds);
 $ds = [];
 $TT = 1;
@@ -226,8 +226,7 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                     <div class="row">
                       <div class="col-md-12 mb-2">
                           <div class="form-group mb-1">
-                          <label for="example-static">Mã bản tin</label>
-                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="text" placeholder="Tiêu đề bản tin..." readonly>
+                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="hidden" placeholder="Tiêu đề bản tin..." readonly>
                           </div>
                       </div>
                       <div class="col-md-12  mb-2">
@@ -268,8 +267,7 @@ while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
                     <div class="row">
                       <div class="col-md-12 mb-2">
                           <div class="form-group mb-1">
-                          <label for="example-static">Mã bản tin</label>
-                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="text" placeholder="Tiêu đề bản tin..." readonly>
+                          <input value="<?php echo $TinID; ?>" name="TinID" id="TinID" class="form-control" type="hidden" placeholder="Tiêu đề bản tin..." readonly>
                           </div>
                       </div>
                       <div class="col-md-12  mb-2">
